@@ -1,4 +1,14 @@
 import React from "react";
+import {
+  ArrowUp,
+  Download,
+  Feather,
+  Mail,
+  MapPin,
+  Navigation,
+  Package,
+  Phone,
+} from "react-feather";
 import { skills } from "../utils/My-skills";
 
 const Home = () => {
@@ -181,8 +191,7 @@ const Home = () => {
                     href="#/"
                     className="btn btn-outline-primary rounded text-white mb-2"
                   >
-                    Download CV{" "}
-                    <i data-feather="download" className="fea icon-sm"></i>
+                    Download CV <Download className="fea icon-sm" />
                   </a>
                 </div>
               </div>
@@ -432,7 +441,7 @@ const Home = () => {
                   <div className="timeline mt-4">
                     <a href={() => false} className="timeline-content">
                       <div className="timeline-icon text-primary">
-                        <i data-feather="feather" className="fea icon-md"></i>
+                        <Feather className="fea icon-md" />
                       </div>
                       <h3 className="title mb-0">UX Designer</h3>
                       <small className="company">Vivo - Senior Designer</small>
@@ -448,10 +457,7 @@ const Home = () => {
                   <div className="timeline mt-4">
                     <a href={() => false} className="timeline-content">
                       <div class="timeline-icon text-primary">
-                        <i
-                          data-feather="navigation"
-                          className="fea icon-md"
-                        ></i>
+                        <Navigation className="fea icon-md" />
                       </div>
                       <h3 className="title mb-0">Web Developer</h3>
                       <small className="company">Oppo - HR Manager</small>
@@ -467,7 +473,7 @@ const Home = () => {
                   <div className="timeline mt-4">
                     <a href={() => false} className="timeline-content">
                       <div className="timeline-icon text-primary">
-                        <i data-feather="package" className="fea icon-md"></i>
+                        <Package className="fea icon-md" />
                       </div>
                       <h3 className="title mb-0">Graphic Designer</h3>
                       <small className="company">Apple - Testor</small>
@@ -612,7 +618,7 @@ const Home = () => {
             <div className="col-md-4 mt-4 pt-2">
               <div className="contact-detail text-center">
                 <div className="icon">
-                  <i data-feather="phone" className="fea icon-md"></i>
+                  <Phone className="fea icon-md" />
                 </div>
                 <div className="content mt-4">
                   <h5 className="title">Phone</h5>
@@ -620,8 +626,8 @@ const Home = () => {
                     Promising development turmoil inclusive education
                     transformative community
                   </p>
-                  <a href="tel:+152534-468-854" className="text-primary">
-                    +152 534-468-854
+                  <a href={() => false} className="text-primary">
+                    +250 788 470370
                   </a>
                 </div>
               </div>
@@ -630,7 +636,7 @@ const Home = () => {
             <div className="col-md-4 mt-4 pt-2">
               <div className="contact-detail text-center">
                 <div className="icon">
-                  <i data-feather="mail" className="fea icon-md"></i>
+                  <Mail className="fea icon-md" />
                 </div>
                 <div className="content mt-4">
                   <h5 className="title">Email</h5>
@@ -638,8 +644,8 @@ const Home = () => {
                     Promising development turmoil inclusive education
                     transformative community
                   </p>
-                  <a href="mailto:contact@example.com" className="text-primary">
-                    contact@example.com
+                  <a href={() => false} className="text-primary">
+                    abdoulniyigena@gmail.com
                   </a>
                 </div>
               </div>
@@ -648,13 +654,11 @@ const Home = () => {
             <div className="col-md-4 mt-4 pt-2">
               <div className="contact-detail text-center">
                 <div className="icon">
-                  <i data-feather="map-pin" className="fea icon-md"></i>
+                  <MapPin className="fea icon-md" />
                 </div>
                 <div class="content mt-4">
                   <h5 className="title">Location</h5>
-                  <p className="text-light-muted">
-                    C/54 Northwest Freeway, Suite 558, Houston, USA 485
-                  </p>
+                  <p className="text-light-muted">Kigali, Rwanda</p>
                 </div>
               </div>
             </div>
@@ -744,6 +748,28 @@ const Home = () => {
       </section>
 
       {/* Aho nyandikira irangirira */}
+
+      {/* Footer */}
+      <footer className="footer footer-bar bg-black">
+        <div className="container text-foot text-center">
+          <p className="mb-0 text-white-50">
+            © {new Date().getFullYear()} Designed by
+            <a href="/" class="text-white-50">
+              {" "}
+              Abdoul Nuru
+            </a>
+          </p>
+        </div>
+      </footer>
+      <a
+        href={() => false}
+        class="back-to-top btn btn-icon btn-soft-primary"
+        id="back-to-top"
+        onclick="topFunction()"
+      >
+        <ArrowUp className="icons" />
+      </a>
+      {/* Aho footer irangirira */}
     </>
   );
 };
