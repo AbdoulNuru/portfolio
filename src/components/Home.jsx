@@ -1,4 +1,5 @@
 import React from "react";
+import { skills } from "../utils/My-skills";
 
 const Home = () => {
   return (
@@ -489,6 +490,46 @@ const Home = () => {
       {/*end section*/}
 
       {/* Aho burambe ku kazi burangirira */}
+
+      {/* Ubuhanga */}
+      <section className="section">
+        <div className="row justify-content-center">
+          <div className="col-12 text-center">
+            <div className="container-title text-center mb-4 pb-2">
+              <div className="titles">
+                <h2 className="title text-capitalize mb-4">
+                  Languages, Frameworks, Libraries and Tools
+                </h2>
+                <p className="pera-title para-desc-600 text-light-muted mb-0 mx-auto">
+                  These are the tools I leverage to bring my projects to life.
+                  They include software development tools, project management
+                  tools, version control tools, and ci/cd tools, among others.
+                </p>
+                <span></span>
+              </div>
+            </div>
+          </div>
+          {/* end col*/}
+        </div>
+        {/*end row*/}
+        <div className="show-skills">
+          {skills.map((skill) => (
+            <div
+              className="skill animate__animated animate__bounceIn animate__delay-500ms"
+              key={skill.id}
+            >
+              <>
+                {skill.logo}
+                {/* <img src={skill.logo} alt={skill.name} /> */}
+                <div className="skill-name">{skill.name}</div>
+                {/* <div className="skill-level">{skill.level}</div> */}
+              </>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Aho ubuhanga burangirira */}
     </>
   );
 };

@@ -2079,3 +2079,56 @@ button:not(:disabled) {
   }
 }
 /*# sourceMappingURL=style.css.map */
+
+/*Skills styles*/
+
+.show-skills {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  position: relative;
+}
+
+@media only screen and (max-width: 600px) {
+  .show-skills {
+    width: 100%;
+  }
+}
+
+.skill {
+  /* background: blue none repeat scroll 0 0; */
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex: 1 1 18%;
+  height: auto;
+  margin: 4px;
+  padding: 20px 0;
+  width: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .skill {
+    flex: 1 1 33%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.skill svg {
+  box-sizing: border-box;
+  margin: 0px;
+  min-width: 0px;
+  max-width: 100%;
+  height: auto;
+  width: 30px;
+}
+.skill .skill-name {
+  box-sizing: border-box;
+  margin: 8px 0px 0px;
+  min-width: 0px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #7e7885;
+  margin-left: 10px;
+}
