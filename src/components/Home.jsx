@@ -13,7 +13,6 @@ const Home = () => {
         </div>
       </div> */}
       {/* Loader */}
-
       {/* Navbar */}
       <nav
         id="navbar"
@@ -150,7 +149,6 @@ const Home = () => {
       </nav>
       {/* end navbar */}
       {/* Navbar End */}
-
       {/* Personal Info  */}
       {/* Tangira Kwivuga */}
       <div
@@ -212,7 +210,6 @@ const Home = () => {
         </div>
       </div>
       {/* Soza Kwivuga */}
-
       {/* Umwirondoro */}
       <section className="bg-light">
         <div className="container">
@@ -296,6 +293,202 @@ const Home = () => {
       </section>
       {/* end section */}
       {/* Aho umwirondoro urangirira */}
+      {/* Serivisi */}
+      <section className="section bg-light" id="services">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 text-center">
+              <div className="container-title text-center mb-4 pb-2">
+                <div className="titles">
+                  <h2 className="title text-capitalize mb-4">
+                    Awesome Service
+                  </h2>
+                  <p className="pera-title para-desc-600 text-light-muted mb-0 mx-auto">
+                    Obviously I'm a Web Designer. Experienced with all stages of
+                    the development cycle for dynamic web projects.
+                  </p>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+            {/* end col*/}
+          </div>
+          {/*end row*/}
+          <div className="row">
+            <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+              <div className="feature-widget text-left rounded">
+                <div className="services-icon text-primary mb-3">
+                  <i data-feather="monitor" className="fea icon-md"></i>
+                </div>
+                <div className="services-texts">
+                  <h3 className="title mb-3">Web Developmnet</h3>
+                  <p className="text-light-muted mb-4">
+                    With lots of unique blocks, you can easily build a page
+                    without coding.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+              <div className="feature-widget text-left rounded">
+                <div className="services-icon text-primary mb-3">
+                  <i data-feather="feather" className="fea icon-md"></i>
+                </div>
+                <div class="services-texts">
+                  <h3 class="title mb-3">Design & Planning</h3>
+                  <p class="text-light-muted mb-4">
+                    With lots of unique blocks, you can easily build a page
+                    without coding.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+              <div className="feature-widget text-left rounded">
+                <div className="services-icon text-primary mb-3">
+                  <i data-feather="disc" className="fea icon-md"></i>
+                </div>
+                <div className="services-texts">
+                  <h3 className="title mb-3">Adobe Photoshop</h3>
+                  <p className="text-light-muted mb-4">
+                    With lots of unique blocks, you can easily build a page
+                    without coding.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+              <div className="feature-widget text-left rounded">
+                <div className="services-icon text-primary mb-3">
+                  <i data-feather="layout" className="fea icon-md"></i>
+                </div>
+                <div className="services-texts">
+                  <h3 className="title mb-3">Digital marketing</h3>
+                  <p className="text-light-muted mb-4">
+                    With lots of unique blocks, you can easily build a page
+                    without coding.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+              <div className="feature-widget text-left rounded">
+                <div className="services-icon text-primary mb-3">
+                  <i data-feather="watch" className="fea icon-md"></i>
+                </div>
+                <div className="services-texts">
+                  <h3 className="title mb-3">24 / 7</h3>
+                  <p className="text-light-muted mb-4">
+                    With lots of unique blocks, you can easily build a page
+                    without coding.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+              <div className="feature-widget text-left rounded">
+                <div className="icon services-icon text-primary mb-3">
+                  <i data-feather="target" className="fea icon-md"></i>
+                </div>
+                <div className="services-texts">
+                  <h3 className="title mb-3">Graphic Designer</h3>
+                  <p className="text-light-muted mb-4">
+                    With lots of unique blocks, you can easily build a page
+                    without coding.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/*end row*/}
+        </div>
+      </section>
+      {/*End Start*/}
+      {/* Aho serivisi zirangirira */}
+
+      {/* Uburambe ku kazi */}
+      <section className="section" id="resume">
+        <div className="container">
+          <div className="row justify-content-center align-items-center">
+            <div className="col-lg-4">
+              <div className="work-content mt-4">
+                <h2 className="text-capitalize">Work Participation</h2>
+                <p className="mb-0 text-light-muted">
+                  Obviously I'm a Web Designer. Experienced with all stages of
+                  the development cycle for dynamic web projects.
+                </p>
+              </div>
+            </div>
+
+            <div className="col-lg-8">
+              <div className="row">
+                <div className="main-timeline">
+                  <div className="timeline mt-4">
+                    <a href={() => false} className="timeline-content">
+                      <div className="timeline-icon text-primary">
+                        <i data-feather="feather" className="fea icon-md"></i>
+                      </div>
+                      <h3 className="title mb-0">UX Designer</h3>
+                      <small className="company">Vivo - Senior Designer</small>
+                      <span className="badge skill-badge education-badge badge-light">
+                        2015 - 2018
+                      </span>
+                      <p className="description text-light-muted mt-2">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Integer males uada tellus lorem, et condimentum
+                      </p>
+                    </a>
+                  </div>
+                  <div className="timeline mt-4">
+                    <a href={() => false} className="timeline-content">
+                      <div class="timeline-icon text-primary">
+                        <i
+                          data-feather="navigation"
+                          className="fea icon-md"
+                        ></i>
+                      </div>
+                      <h3 className="title mb-0">Web Developer</h3>
+                      <small className="company">Oppo - HR Manager</small>
+                      <span className="badge skill-badge education-badge margin-50 badge-light">
+                        2012 - 2015
+                      </span>
+                      <p className="description text-light-muted mt-2">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Integer males uada tellus lorem, et condimentum
+                      </p>
+                    </a>
+                  </div>
+                  <div className="timeline mt-4">
+                    <a href={() => false} className="timeline-content">
+                      <div className="timeline-icon text-primary">
+                        <i data-feather="package" className="fea icon-md"></i>
+                      </div>
+                      <h3 className="title mb-0">Graphic Designer</h3>
+                      <small className="company">Apple - Testor</small>
+                      <span className="badge skill-badge education-badge badge-light">
+                        2012 - 2010
+                      </span>
+                      <p className="description text-light-muted mt-2">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Integer males uada tellus lorem, et condimentum
+                      </p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* end container*/}
+      </section>
+      {/*end section*/}
+
+      {/* Aho burambe ku kazi burangirira */}
     </>
   );
 };
