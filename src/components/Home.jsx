@@ -279,11 +279,10 @@ const Home = () => {
                             <span id="typed" className="text-primary"></span>
                           </h4>
                           <p className="text-light-muted mt-2">
-                            Obviously I'm a Web Designer. Web Developer with
-                            over 3 years of experience. Experienced with all
-                            stages of the development cycle for dynamic web
-                            projects. The as opposed to using 'Content here,
-                            content here', making it look like readable English.
+                            A software Engineer with a successful track record in the
+                            information technology and services industries. Expertise in
+                            NodeJS, ReactJS, SpringBoot, Agile Software Development, Test
+                            Driven Development, Continuous Integration and Delivery, and SQL/NoSQL Databases. 
                           </p>
                           <img src="img/signature.png" height="65" alt="" style={{marginLeft: "-23px"}}/>
                         </div>
@@ -316,7 +315,7 @@ const Home = () => {
                    Services that I Provide
                   </h2>
                   <p className="pera-title para-desc-600 text-light-muted mb-0 mx-auto">
-                    I am always striving to provide exceptional services to my <br/> clients
+                    I am always striving to provide exceptional services to my <br/> clients.
                   </p>
                   <span></span>
                 </div>
@@ -522,7 +521,7 @@ const Home = () => {
                   <h2 className="title text-capitalize mb-4">My Work</h2>
                   <p className="pera-title para-desc-600 text-light-muted mb-0 mx-auto">
                     Listed below are a few of the projects on which <br/>
-                    I have worked on
+                    I have worked on.
                   </p>
                   <span></span>
                 </div>
@@ -614,7 +613,7 @@ const Home = () => {
                 <div className="content mt-4">
                   <h5 className="title">Email</h5>
                   <p className="text-light-muted">
-                   You can send me an email and I will get back to as soon as possible
+                   You can send me an email and I will get back to as soon as possible.
                   </p>
                   <a href={() => false} className="text-primary">
                     abdoulniyigena@gmail.com
