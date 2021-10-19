@@ -7,7 +7,8 @@ import {
   Phone,
   Monitor,
   Smartphone,
-  Settings
+  Settings,
+  Package
 } from "react-feather";
 import { skills } from "../utils/My-skills";
 
@@ -284,7 +285,7 @@ const Home = () => {
                             projects. The as opposed to using 'Content here,
                             content here', making it look like readable English.
                           </p>
-                          <img src="img/signature.png" height="65" alt="" />
+                          <img src="img/signature.png" height="65" alt="" style={{marginLeft: "-23px"}}/>
                         </div>
                         {/* end col */}
                       </div>
@@ -312,11 +313,10 @@ const Home = () => {
               <div className="container-title text-center mb-4 pb-2">
                 <div className="titles">
                   <h2 className="title text-capitalize mb-4">
-                    Awesome Service
+                   Services that I Provide
                   </h2>
                   <p className="pera-title para-desc-600 text-light-muted mb-0 mx-auto">
-                    Obviously I'm a Web Designer. Experienced with all stages of
-                    the development cycle for dynamic web projects.
+                    I am always striving to provide exceptional services to my <br/> clients
                   </p>
                   <span></span>
                 </div>
@@ -335,8 +335,7 @@ const Home = () => {
                 <div className="services-texts">
                   <h3 className="title mb-3">Web & Dashboards Development</h3>
                   <p className="text-light-muted mb-4">
-                    With lots of unique blocks, you can easily build a page
-                    without coding.
+                    Design, Develop and Support of web solutions that enable digital transformation and improve your business workflows.
                   </p>
                 </div>
               </div>
@@ -350,9 +349,8 @@ const Home = () => {
                 </div>
                 <div class="services-texts">
                   <h3 class="title mb-3">Mobile Applications Development</h3>
-                  <p class="text-light-muted mb-4">
-                    With lots of unique blocks, you can easily build a page
-                    without coding.
+                  <p class="text-light-muted mb-1">
+                   Enhance mobile users' experience by providing well-tailored mobile apps. From native android and ios apps to cross-platform apps, I've got you covered.
                   </p>
                 </div>
               </div>
@@ -364,10 +362,9 @@ const Home = () => {
                   <Settings className="fea icon-md"/>
                 </div>
                 <div className="services-texts">
-                  <h3 className="title mb-3">Api's Development</h3>
+                  <h3 className="title mb-3">Backend Development</h3>
                   <p className="text-light-muted mb-4">
-                    With lots of unique blocks, you can easily build a page
-                    without coding.
+                    I deal with everything server-side, including APIs, databases and servers, and  leveraging a variety of skills I've acquired over the years.
                   </p>
                 </div>
               </div>
@@ -377,46 +374,17 @@ const Home = () => {
               <div className="feature-widget text-left rounded">
                 <div className="services-icon text-primary mb-3">
                   <i data-feather="layout" className="fea icon-md"></i>
+                  <Package className="fea icon-md"/>
                 </div>
                 <div className="services-texts">
-                  <h3 className="title mb-3">Digital marketing</h3>
+                  <h3 className="title mb-3">Project management</h3>
                   <p className="text-light-muted mb-4">
-                    With lots of unique blocks, you can easily build a page
-                    without coding.
+                    Planning, coordinating, and executing projects in accordance with specific requirements and constraints.
                   </p>
                 </div>
               </div>
             </div>
-
-            <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
-              <div className="feature-widget text-left rounded">
-                <div className="services-icon text-primary mb-3">
-                  <i data-feather="watch" className="fea icon-md"></i>
-                </div>
-                <div className="services-texts">
-                  <h3 className="title mb-3">24 / 7</h3>
-                  <p className="text-light-muted mb-4">
-                    With lots of unique blocks, you can easily build a page
-                    without coding.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
-              <div className="feature-widget text-left rounded">
-                <div className="icon services-icon text-primary mb-3">
-                  <i data-feather="target" className="fea icon-md"></i>
-                </div>
-                <div className="services-texts">
-                  <h3 className="title mb-3">Graphic Designer</h3>
-                  <p className="text-light-muted mb-4">
-                    With lots of unique blocks, you can easily build a page
-                    without coding.
-                  </p>
-                </div>
-              </div>
-            </div>
+         
           </div>
           {/*end row*/}
         </div>
