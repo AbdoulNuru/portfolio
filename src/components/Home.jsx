@@ -2,14 +2,15 @@ import React from "react";
 import {
   ArrowUp,
   Download,
-  Feather,
   Mail,
   MapPin,
-  Navigation,
-  Package,
   Phone,
+  Monitor,
+  Smartphone,
+  Settings
 } from "react-feather";
 import { skills } from "../utils/My-skills";
+
 
 const Home = () => {
   return (
@@ -328,10 +329,11 @@ const Home = () => {
             <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
               <div className="feature-widget text-left rounded">
                 <div className="services-icon text-primary mb-3">
-                  <i data-feather="monitor" className="fea icon-md"></i>
+                
+                  <Monitor className="fea icon-md"/>
                 </div>
                 <div className="services-texts">
-                  <h3 className="title mb-3">Web Developmnet</h3>
+                  <h3 className="title mb-3">Web & Dashboards Development</h3>
                   <p className="text-light-muted mb-4">
                     With lots of unique blocks, you can easily build a page
                     without coding.
@@ -343,10 +345,11 @@ const Home = () => {
             <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
               <div className="feature-widget text-left rounded">
                 <div className="services-icon text-primary mb-3">
-                  <i data-feather="feather" className="fea icon-md"></i>
+                  
+                  <Smartphone className="fea icon-md"/>
                 </div>
                 <div class="services-texts">
-                  <h3 class="title mb-3">Design & Planning</h3>
+                  <h3 class="title mb-3">Mobile Applications Development</h3>
                   <p class="text-light-muted mb-4">
                     With lots of unique blocks, you can easily build a page
                     without coding.
@@ -358,10 +361,10 @@ const Home = () => {
             <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
               <div className="feature-widget text-left rounded">
                 <div className="services-icon text-primary mb-3">
-                  <i data-feather="disc" className="fea icon-md"></i>
+                  <Settings className="fea icon-md"/>
                 </div>
                 <div className="services-texts">
-                  <h3 className="title mb-3">Adobe Photoshop</h3>
+                  <h3 className="title mb-3">Api's Development</h3>
                   <p className="text-light-muted mb-4">
                     With lots of unique blocks, you can easily build a page
                     without coding.
@@ -427,10 +430,10 @@ const Home = () => {
           <div className="row justify-content-center align-items-center">
             <div className="col-lg-4">
               <div className="work-content mt-4">
-                <h2 className="text-capitalize">Work Participation</h2>
+                <h2 className="text-capitalize">Work Experience</h2>
                 <p className="mb-0 text-light-muted">
-                  Obviously I'm a Web Designer. Experienced with all stages of
-                  the development cycle for dynamic web projects.
+                  Extensive experience with all stages of
+                  the development cycle for dynamic web, api's and mobile projects.
                 </p>
               </div>
             </div>
@@ -441,49 +444,53 @@ const Home = () => {
                   <div className="timeline mt-4">
                     <a href={() => false} className="timeline-content">
                       <div className="timeline-icon text-primary">
-                        <Feather className="fea icon-md" />
+                    <img src="img/equitylogo.png" className="fea icon-md2" alt="equitybank logo"/>
+                        {/* <Feather className="fea icon-md" /> */}
+                       
                       </div>
-                      <h3 className="title mb-0">UX Designer</h3>
-                      <small className="company">Vivo - Senior Designer</small>
+                      <h3 className="title mb-0">Software Engineer</h3>
+                      <small className="company">Equity Bank Rwanda PLC</small>
                       <span className="badge skill-badge education-badge badge-light">
-                        2015 - 2018
+                        Jun 2021 - Present
                       </span>
-                      <p className="description text-light-muted mt-2">
+                      {/* <p className="description text-light-muted mt-2">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Integer males uada tellus lorem, et condimentum
-                      </p>
+                      </p> */}
                     </a>
                   </div>
                   <div className="timeline mt-4">
                     <a href={() => false} className="timeline-content">
                       <div class="timeline-icon text-primary">
-                        <Navigation className="fea icon-md" />
+                        {/* <Navigation className="fea icon-md" /> */}
+                       <img src="img/gtlogo.png" className="fea icon-md" style={{borderRadius: "15px"}} alt = "gtbank logo"/>
                       </div>
-                      <h3 className="title mb-0">Web Developer</h3>
-                      <small className="company">Oppo - HR Manager</small>
+                      <h3 className="title mb-0">Software Engineer</h3>
+                      <small className="company">Guaranty Trust Bank (Rwanda) plc</small>
                       <span className="badge skill-badge education-badge margin-50 badge-light">
-                        2012 - 2015
+                        Jun 2020 - Jun 2021
                       </span>
-                      <p className="description text-light-muted mt-2">
+                      {/* <p className="description text-light-muted mt-2">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Integer males uada tellus lorem, et condimentum
-                      </p>
+                      </p> */}
                     </a>
                   </div>
                   <div className="timeline mt-4">
                     <a href={() => false} className="timeline-content">
                       <div className="timeline-icon text-primary">
-                        <Package className="fea icon-md" />
+                        {/* <Package className="fea icon-md" /> */}
+                        <img src="img/andelalogo.png" className="fea icon-md" alt= "andela logo"/>
                       </div>
-                      <h3 className="title mb-0">Graphic Designer</h3>
-                      <small className="company">Apple - Testor</small>
+                      <h3 className="title mb-0">Software Engineer</h3>
+                      <small className="company">Andela</small>
                       <span className="badge skill-badge education-badge badge-light">
-                        2012 - 2010
+                        Dec 2019 - Jun 2020
                       </span>
-                      <p className="description text-light-muted mt-2">
+                      {/* <p className="description text-light-muted mt-2">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Integer males uada tellus lorem, et condimentum
-                      </p>
+                      </p> */}
                     </a>
                   </div>
                 </div>
@@ -546,8 +553,8 @@ const Home = () => {
                 <div className="titles">
                   <h2 className="title text-capitalize mb-4">My Work</h2>
                   <p className="pera-title para-desc-600 text-light-muted mb-0 mx-auto">
-                    Obviously I'm a Web Designer. Experienced with all stages of
-                    the development cycle for dynamic web projects.
+                    Listed below are a few of the projects on which <br/>
+                    I have worked on
                   </p>
                   <span></span>
                 </div>
@@ -605,8 +612,7 @@ const Home = () => {
                 <div className="titles">
                   <h2 className="title text-capitalize mb-4">Contact Me</h2>
                   <p className="pera-title para-desc-600 text-light-muted mb-0 mx-auto">
-                    Obviously I'm a Web Designer. Experienced with all stages of
-                    the development cycle for dynamic web projects.
+                    Whether you want to hire me, collaborate on a project, or have any other questions, please contact me and I will return your calls or respond to your emails as soon as possible.
                   </p>
                   <span></span>
                 </div>
@@ -623,8 +629,7 @@ const Home = () => {
                 <div className="content mt-4">
                   <h5 className="title">Phone</h5>
                   <p className="text-light-muted">
-                    Promising development turmoil inclusive education
-                    transformative community
+                   You can reach me at this number if you want to collaborate or hire me.
                   </p>
                   <a href={() => false} className="text-primary">
                     +250 788 470370
@@ -641,8 +646,7 @@ const Home = () => {
                 <div className="content mt-4">
                   <h5 className="title">Email</h5>
                   <p className="text-light-muted">
-                    Promising development turmoil inclusive education
-                    transformative community
+                   You can send me an email and I will get back to as soon as possible
                   </p>
                   <a href={() => false} className="text-primary">
                     abdoulniyigena@gmail.com

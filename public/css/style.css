@@ -290,9 +290,16 @@ a {
 }
 
 .fea.icon-md {
-  height: 26px;
-  width: 26px;
+  height: 46px;
+  width: 46px;
 }
+
+.fea.icon-md2 {
+  height: 40px;
+  width: 40px;
+  margin-left: 2px; 
+}
+
 
 .font-14 {
   font-size: 14px;
@@ -2131,4 +2138,8 @@ button:not(:disabled) {
   font-weight: 400;
   color: #7e7885;
   margin-left: 10px;
+}
+
+.adl{
+  color: #3359DF;
 }
