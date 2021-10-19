@@ -1,4 +1,5 @@
 import React from "react";
+import Typewriter from 'typewriter-effect';
 import {
   ArrowUp,
   Download,
@@ -173,17 +174,27 @@ const Home = () => {
           <div className="row">
             <div className="col-lg-7 col-md-7 align-items-center">
               <div className="title-heading mt-4 py--50">
-                <h1 className="heading text-black">
-                  I Am{" "}
-                  <span
-                    className="element text-primary"
-                    data-elements="Web Designer, Web Developer, Photographer"
-                  ></span>
-                  <span id="typed" className="text-primary"></span>
+                <h1 className="heading">
+                 <span style={{color: "#007BFF"}}> I am a{" "}</span>
+                   <Typewriter
+                            options={{
+                                strings: ['Software Engineer', 'DevOps Engineer', '& Mentor'],
+                                autoStart: true,
+                                loop: true,
+                            }}
+                            
+                        />
+                
+                  
                 </h1>
                 <p className="pera-title text-light-muted">
-                  Obviously I'm a Web Designer. Web Developer with over 3 years
-                  of experience. Experienced with all stages of the development
+                  Software Engineer with 2+ years of experience in software
+                   development industry and a bachelors degree in computer sofware engineering.
+                  {/* a track record of success
+                  in the information technology and services industry.
+                  Expert in NodeJS, ReactJS, SpringBoot, Agile Software Development,
+                  Test Driven Development, Continuous Integration, and Continuous Delivery,                
+                  and SQL/NoSQL Databases. With a bachelor's degree in software engineering. */}
                 </p>
                 <div className="hero-btn mt-4 pt-2">
                   <a href="#/" className="btn btn-primary rounded me-2 mb-2">
