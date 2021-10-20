@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Typewriter from "typewriter-effect";
 import {
-  ArrowUp,
+  // ArrowUp,
   Download,
   Mail,
   MapPin,
@@ -16,8 +16,17 @@ import {
   Menu
 } from "react-feather";
 import { skills } from "../utils/My-skills";
+import MyResume from "../assets/Abdou Nuru Resume.pdf";
+import LoadingScreen from "./Loading";
 
 const Home = () => {
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => setLoading(true), 2600)
+  }, [])
+
+
   return (
     <>
       {/* Loader */}
@@ -31,7 +40,12 @@ const Home = () => {
       </div> */}
       {/* Loader */}
       {/* Navbar */}
-      <nav
+  {
+    loading === false ?
+     <LoadingScreen/>
+     :
+    <>
+          <nav
         id="navbar"
         className="navbar navbar-expand-lg fixed-top navbar-custom navbar-light sticky"
       >
@@ -61,7 +75,7 @@ const Home = () => {
           >
             <ul id="navbar-navlist" className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a className="nav-link active" href="index-typed.html#home">
+                <a className="nav-link active" href="/">
                   Home
                 </a>
               </li>
@@ -130,7 +144,7 @@ const Home = () => {
                     Hire Me
                   </a>
                   <a
-                    href="#/"
+                    href={MyResume}
                     className="btn btn-outline-primary rounded text-white mb-2"
                   >
                     Download CV <Download className="fea icon-sm" />
@@ -162,7 +176,7 @@ const Home = () => {
         </div>
       </div>
       {/* Soza Kwivuga */}
-      {/* Umwirondoro */}
+  {/* Umwirondoro */}
       <section className="bg-light">
         <div className="container">
           <div className="row">
@@ -206,7 +220,6 @@ const Home = () => {
                         </div>
                       </div>
                     </div>
-
                     <div className="col-lg-9 col-md-8">
                       <div className="row align-items-end">
                         <div className="col-md-12 text-md-start mt-4 mt-sm-0">
@@ -219,19 +232,17 @@ const Home = () => {
                             <span id="typed" className="text-primary"></span>
                           </h4>
                           <p className="text-light-muted mt-2">
-                            A software Engineer with a successful track record
-                            in the information technology and services
-                            industries. Expertise in NodeJS, ReactJS,
-                            SpringBoot, Agile Software Development, Test Driven
-                            Development, Continuous Integration and Delivery,
-                            and SQL/NoSQL Databases.
+                            Obviously I'm a Web Designer. Web Developer with
+                            over 3 years of experience. Experienced with all
+                            stages of the development cycle for dynamic web
+                            projects. The as opposed to using 'Content here,
+                            content here', making it look like readable English.
+                            A software Engineer with a successful track record in the
+                            information technology and services industries. Expertise in
+                            NodeJS, ReactJS, SpringBoot, Agile Software Development, Test
+                            Driven Development, Continuous Integration and Delivery, and SQL/NoSQL Databases. 
                           </p>
-                          <img
-                            src="img/signature.png"
-                            height="65"
-                            alt=""
-                            style={{ marginLeft: "-23px" }}
-                          />
+                          <img src="img/signature.png" height="65" alt="" style={{marginLeft: "-23px"}}/>
                         </div>
                         {/* end col */}
                       </div>
@@ -251,6 +262,7 @@ const Home = () => {
       </section>
       {/* end section */}
       {/* Aho umwirondoro urangirira */}
+
       {/* Serivisi */}
       <section className="section bg-light" id="services">
         <div className="container">
@@ -702,15 +714,9 @@ const Home = () => {
           </p>
         </div>
       </footer>
-      <a
-        href={() => false}
-        class="back-to-top btn btn-icon btn-soft-primary"
-        id="back-to-top"
-        onclick="topFunction()"
-      >
-        <ArrowUp className="icons" />
-      </a>
       {/* Aho footer irangirira */}
+    </>
+  }
     </>
   );
 };

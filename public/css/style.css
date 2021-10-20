@@ -93,7 +93,8 @@ a {
   height: 32px;
   line-height: 30px;
   display: none;
-  color: #161c2d;
+  /* color: #161c2d; */
+  color: red;
   background-color: #ced4da;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
@@ -2144,6 +2145,20 @@ button:not(:disabled) {
   margin-left: 10px;
 }
 
-.adl{
-  color: #3359DF;
+.shadow2 {
+  position:absolute;
+  max-width:45%;
+  max-height:45%;
+  top:50%;
+  left:50%;
+  overflow:visible;
 }
+
+.adl {
+  position:relative;
+  max-width:100%;
+  max-height:100%;
+  margin-top:-50%;
+  margin-left:-50%;
+}
+
