@@ -1,5 +1,5 @@
 import React from "react";
-import Typewriter from 'typewriter-effect';
+import Typewriter from "typewriter-effect";
 import {
   ArrowUp,
   Download,
@@ -9,10 +9,13 @@ import {
   Monitor,
   Smartphone,
   Settings,
-  Package
+  Package,
+  Linkedin,
+  GitHub,
+  Twitter,
+  Menu
 } from "react-feather";
 import { skills } from "../utils/My-skills";
-
 
 const Home = () => {
   return (
@@ -34,8 +37,8 @@ const Home = () => {
       >
         <div className="container">
           {/* Logo container */}
-          <a className="logo" href="#/">
-            Abdoul
+          <a className="logo" href="#/" style={{width: "200px"}}>
+            Abdoul Nuru
           </a>
 
           <button
@@ -47,7 +50,8 @@ const Home = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <i className="mdi mdi-menu"></i>
+          <Menu/>
+          
           </button>
           {/* end button */}
 
@@ -61,102 +65,25 @@ const Home = () => {
                   Home
                 </a>
               </li>
-              {/* end nav item */}
-              <li className="nav-item">
-                <a className="nav-link" href="index-typed.html#services">
-                  Services
+               <li class="list-inline-item me-2">
+                <a href="https://www.linkedin.com/in/abdou-nuru-niyigena/">
+                  <Linkedin style={{width: "18px", marginTop: "5px"}}/>
                 </a>
               </li>
-              {/* end nav item */}
-              <li className="nav-item">
-                <a className="nav-link" href="index-typed.html#resume">
-                  Resume
-                </a>
-              </li>
-              {/* end nav item */}
-              <li className="nav-item">
-                <a className="nav-link" href="index-typed.html#projects">
-                  Projects
-                </a>
-              </li>
-              {/* end nav item */}
-              <li className="nav-item">
-                <a className="nav-link" href="index-typed.html#news">
-                  Blog
-                </a>
-              </li>
-              {/* end nav item */}
-              <li className="nav-item">
-                <a className="nav-link" href="index-typed.html#contact">
-                  Contact
-                </a>
-              </li>
-              {/* end nav item */}
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#/"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Pages
-                </a>
-                <div
-                  className="dropdown-menu rounded m-0"
-                  aria-labelledby="navbarDropdown"
-                >
-                  <div className="container ms-0 ms-md-0">
-                    <div className="row">
-                      <div className="col-md-12">
-                        <a className="dropdown-item" href="page-blog.html">
-                          Blog
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="page-blog-detail.html"
-                        >
-                          Blog Detail
-                        </a>
-                        <a className="dropdown-item" href="page-portfolio.html">
-                          Portfolio
-                        </a>
-                        <a
-                          className="dropdown-item"
-                          href="page-portfolio-detail.html"
-                        >
-                          Portfolio Detail
-                        </a>
-                      </div>
-                      {/* end col */}
-                    </div>
-                    {/* end row */}
-                  </div>
-                  {/* end container */}
-                </div>
-              </li>
-              {/* end nav item */}
-            </ul>
-
-            <ul className="top-right text-right list-unstyled list-inline mb-0 mt-2 mt-sm-0 nav-social">
+          
               <li className="list-inline-item me-2">
-                <a href="#/">
-                  <i className="mdi mdi-facebook"></i>
+                <a href="https://twitter.com/nuru_abdoul">
+                <Twitter style={{width: "18px", marginTop: "5px"}}/>
                 </a>
               </li>
               <li className="list-inline-item me-2">
-                <a href="#/">
-                  <i className="mdi mdi-twitter"></i>
+                <a href="https://github.com/AbdoulNuru">
+                 <GitHub style={{width: "18px", marginTop: "5px"}}/>
                 </a>
               </li>
-              <li className="list-inline-item">
-                <a href="#/">
-                  <i className="mdi mdi-instagram"></i>
-                </a>
-              </li>
+              {/* end nav item */}
             </ul>
+            {/* className="top-right text-right list-unstyled list-inline mb-0 mt-2 mt-sm-0 nav-social" */}
           </div>
         </div>
         {/* end container */}
@@ -175,21 +102,23 @@ const Home = () => {
             <div className="col-lg-7 col-md-7 align-items-center">
               <div className="title-heading mt-4 py--50">
                 <h1 className="heading">
-                 <span style={{color: "#007BFF"}}> I am a{" "}</span>
-                   <Typewriter
-                            options={{
-                                strings: ['Software Engineer', 'DevOps Engineer', '& Mentor'],
-                                autoStart: true,
-                                loop: true,
-                            }}
-                            
-                        />
-                
-                  
+                  <span style={{ color: "#007BFF" }}> I am a </span>
+                  <Typewriter
+                    options={{
+                      strings: [
+                        "Software Engineer",
+                        "DevOps Engineer",
+                        "& Mentor",
+                      ],
+                      autoStart: true,
+                      loop: true,
+                    }}
+                  />
                 </h1>
                 <p className="pera-title text-light-muted">
                   Software Engineer with 2+ years of experience in software
-                   development industry and a bachelors degree in computer sofware engineering.
+                  development industry and a bachelors degree in computer
+                  sofware engineering.
                   {/* a track record of success
                   in the information technology and services industry.
                   Expert in NodeJS, ReactJS, SpringBoot, Agile Software Development,
@@ -290,12 +219,19 @@ const Home = () => {
                             <span id="typed" className="text-primary"></span>
                           </h4>
                           <p className="text-light-muted mt-2">
-                            A software Engineer with a successful track record in the
-                            information technology and services industries. Expertise in
-                            NodeJS, ReactJS, SpringBoot, Agile Software Development, Test
-                            Driven Development, Continuous Integration and Delivery, and SQL/NoSQL Databases. 
+                            A software Engineer with a successful track record
+                            in the information technology and services
+                            industries. Expertise in NodeJS, ReactJS,
+                            SpringBoot, Agile Software Development, Test Driven
+                            Development, Continuous Integration and Delivery,
+                            and SQL/NoSQL Databases.
                           </p>
-                          <img src="img/signature.png" height="65" alt="" style={{marginLeft: "-23px"}}/>
+                          <img
+                            src="img/signature.png"
+                            height="65"
+                            alt=""
+                            style={{ marginLeft: "-23px" }}
+                          />
                         </div>
                         {/* end col */}
                       </div>
@@ -323,10 +259,11 @@ const Home = () => {
               <div className="container-title text-center mb-4 pb-2">
                 <div className="titles">
                   <h2 className="title text-capitalize mb-4">
-                   Services that I Provide
+                    Services that I Provide
                   </h2>
                   <p className="pera-title para-desc-600 text-light-muted mb-0 mx-auto">
-                    I am always striving to provide exceptional services to my <br/> clients.
+                    I am always striving to provide exceptional services to my{" "}
+                    <br /> clients.
                   </p>
                   <span></span>
                 </div>
@@ -339,13 +276,13 @@ const Home = () => {
             <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
               <div className="feature-widget text-left rounded">
                 <div className="services-icon text-primary mb-3">
-                
-                  <Monitor className="fea icon-md"/>
+                  <Monitor className="fea icon-md" />
                 </div>
                 <div className="services-texts">
                   <h3 className="title mb-3">Web & Dashboards Development</h3>
                   <p className="text-light-muted mb-4">
-                    Design, Develop and Support of web solutions that enable digital transformation and improve your business workflows.
+                    Design, Develop and Support of web solutions that enable
+                    digital transformation and improve your business workflows.
                   </p>
                 </div>
               </div>
@@ -354,13 +291,14 @@ const Home = () => {
             <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
               <div className="feature-widget text-left rounded">
                 <div className="services-icon text-primary mb-3">
-                  
-                  <Smartphone className="fea icon-md"/>
+                  <Smartphone className="fea icon-md" />
                 </div>
                 <div class="services-texts">
                   <h3 class="title mb-3">Mobile Applications Development</h3>
                   <p class="text-light-muted mb-1">
-                   Enhance mobile users' experience by providing well-tailored mobile apps. From native android and ios apps to cross-platform apps, I've got you covered.
+                    Enhance mobile users' experience by providing well-tailored
+                    mobile apps. From native android and ios apps to
+                    cross-platform apps, I've got you covered.
                   </p>
                 </div>
               </div>
@@ -369,12 +307,14 @@ const Home = () => {
             <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
               <div className="feature-widget text-left rounded">
                 <div className="services-icon text-primary mb-3">
-                  <Settings className="fea icon-md"/>
+                  <Settings className="fea icon-md" />
                 </div>
                 <div className="services-texts">
                   <h3 className="title mb-3">Backend Development</h3>
                   <p className="text-light-muted mb-4">
-                    I deal with everything server-side, including APIs, databases and servers, and  leveraging a variety of skills I've acquired over the years.
+                    I deal with everything server-side, including APIs,
+                    databases and servers, and leveraging a variety of skills
+                    I've acquired over the years.
                   </p>
                 </div>
               </div>
@@ -384,17 +324,17 @@ const Home = () => {
               <div className="feature-widget text-left rounded">
                 <div className="services-icon text-primary mb-3">
                   <i data-feather="layout" className="fea icon-md"></i>
-                  <Package className="fea icon-md"/>
+                  <Package className="fea icon-md" />
                 </div>
                 <div className="services-texts">
                   <h3 className="title mb-3">Project management</h3>
                   <p className="text-light-muted mb-4">
-                    Planning, coordinating, and executing projects in accordance with specific requirements and constraints.
+                    Planning, coordinating, and executing projects in accordance
+                    with specific requirements and constraints.
                   </p>
                 </div>
               </div>
             </div>
-         
           </div>
           {/*end row*/}
         </div>
@@ -410,8 +350,8 @@ const Home = () => {
               <div className="work-content mt-4">
                 <h2 className="text-capitalize">Work Experience</h2>
                 <p className="mb-0 text-light-muted">
-                  Extensive experience with all stages of
-                  the development cycle for dynamic web, api's and mobile projects.
+                  Extensive experience with all stages of the development cycle
+                  for dynamic web, api's and mobile projects.
                 </p>
               </div>
             </div>
@@ -422,9 +362,12 @@ const Home = () => {
                   <div className="timeline mt-4">
                     <a href={() => false} className="timeline-content">
                       <div className="timeline-icon text-primary">
-                    <img src="img/equitylogo.png" className="fea icon-md2" alt="equitybank logo"/>
+                        <img
+                          src="img/equitylogo.png"
+                          className="fea icon-md2"
+                          alt="equitybank logo"
+                        />
                         {/* <Feather className="fea icon-md" /> */}
-                       
                       </div>
                       <h3 className="title mb-0">Software Engineer</h3>
                       <small className="company">Equity Bank Rwanda PLC</small>
@@ -441,10 +384,17 @@ const Home = () => {
                     <a href={() => false} className="timeline-content">
                       <div class="timeline-icon text-primary">
                         {/* <Navigation className="fea icon-md" /> */}
-                       <img src="img/gtlogo.png" className="fea icon-md" style={{borderRadius: "15px"}} alt = "gtbank logo"/>
+                        <img
+                          src="img/gtlogo.png"
+                          className="fea icon-md"
+                          style={{ borderRadius: "15px" }}
+                          alt="gtbank logo"
+                        />
                       </div>
                       <h3 className="title mb-0">Software Engineer</h3>
-                      <small className="company">Guaranty Trust Bank (Rwanda) plc</small>
+                      <small className="company">
+                        Guaranty Trust Bank (Rwanda) plc
+                      </small>
                       <span className="badge skill-badge education-badge margin-50 badge-light">
                         Jun 2020 - Jun 2021
                       </span>
@@ -458,7 +408,11 @@ const Home = () => {
                     <a href={() => false} className="timeline-content">
                       <div className="timeline-icon text-primary">
                         {/* <Package className="fea icon-md" /> */}
-                        <img src="img/andelalogo.png" className="fea icon-md" alt= "andela logo"/>
+                        <img
+                          src="img/andelalogo.png"
+                          className="fea icon-md"
+                          alt="andela logo"
+                        />
                       </div>
                       <h3 className="title mb-0">Software Engineer</h3>
                       <small className="company">Andela</small>
@@ -531,8 +485,8 @@ const Home = () => {
                 <div className="titles">
                   <h2 className="title text-capitalize mb-4">My Work</h2>
                   <p className="pera-title para-desc-600 text-light-muted mb-0 mx-auto">
-                    Listed below are a few of the projects on which <br/>
-                    I have worked on.
+                    Listed below are a few of the projects on which <br />I have
+                    worked on.
                   </p>
                   <span></span>
                 </div>
@@ -590,7 +544,10 @@ const Home = () => {
                 <div className="titles">
                   <h2 className="title text-capitalize mb-4">Contact Me</h2>
                   <p className="pera-title para-desc-600 text-light-muted mb-0 mx-auto">
-                    Whether you want to hire me, collaborate on a project, or have any other questions, please contact me and I will return your calls or respond to your emails as soon as possible.
+                    Whether you want to hire me, collaborate on a project, or
+                    have any other questions, please contact me and I will
+                    return your calls or respond to your emails as soon as
+                    possible.
                   </p>
                   <span></span>
                 </div>
@@ -607,7 +564,8 @@ const Home = () => {
                 <div className="content mt-4">
                   <h5 className="title">Phone</h5>
                   <p className="text-light-muted">
-                   You can reach me at this number if you want to collaborate or hire me.
+                    You can reach me at this number if you want to collaborate
+                    or hire me.
                   </p>
                   <a href={() => false} className="text-primary">
                     +250 788 470370
@@ -624,7 +582,8 @@ const Home = () => {
                 <div className="content mt-4">
                   <h5 className="title">Email</h5>
                   <p className="text-light-muted">
-                   You can send me an email and I will get back to as soon as possible.
+                    You can send me an email and I will get back to as soon as
+                    possible.
                   </p>
                   <a href={() => false} className="text-primary">
                     abdoulniyigena@gmail.com
