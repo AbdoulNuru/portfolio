@@ -137,7 +137,7 @@ const Home = () => {
                     </p>
                     <div className="hero-btn mt-4 pt-2">
                       <a
-                        href="#/"
+                        href="mailto:abdoulniyigena@gmail.com"
                         className="btn btn-primary rounded me-2 mb-2"
                       >
                         Hire Me
