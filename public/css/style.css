@@ -869,50 +869,6 @@ a {
   color: #ffffff;
 }
 
-.preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #007bff;
-  z-index: 9999999;
-}
-
-.preloader .status {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.preloader .spinner {
-  width: 40px;
-  height: 40px;
-  position: relative;
-  margin: 100px auto;
-}
-
-.preloader .double-bounce1,
-.preloader .double-bounce2 {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: #ffffff;
-  opacity: 0.6;
-  position: absolute;
-  top: 0;
-  left: 0;
-  -webkit-animation: sk-bounce 2s infinite ease-in-out;
-  animation: sk-bounce 2s infinite ease-in-out;
-}
-
-.preloader .status .spinner .double-bounce2 {
-  -webkit-animation-delay: -1s;
-  animation-delay: -1s;
-}
 
 @-webkit-keyframes sk-bounce {
   0%,
