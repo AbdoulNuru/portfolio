@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f7e24d3d7fa82086edebf726c2691596",
+    "revision": "fd6929260f986e1eca523d2fd546274b",
     "url": "/portfolio/index.html"
   },
   {
@@ -12,15 +12,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/portfolio/static/js/2.79770d20.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5151aceff26c862239a6",
-    "url": "/portfolio/static/js/main.28375f9b.chunk.js"
+    "revision": "d062cb09216c6ed13786",
+    "url": "/portfolio/static/js/main.c65881b3.chunk.js"
   },
   {
     "revision": "7586950e9bfddf720b57",
     "url": "/portfolio/static/js/runtime-main.1641258c.js"
   },
   {
-    "revision": "0110df129500d5f753e00b17fffe7763",
-    "url": "/portfolio/static/media/Abdou Nuru Resume.0110df12.pdf"
+    "revision": "5492578235608847f4153acc6a4f842f",
+    "url": "/portfolio/static/media/Abdou's Resume.54925782.pdf"
   }
 ]);
