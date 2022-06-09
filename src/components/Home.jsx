@@ -15,7 +15,7 @@ import {
   Menu,
 } from "react-feather";
 import { skills } from "../utils/My-skills";
-import MyResume from "../assets/Abdou Nuru Resume.pdf";
+import MyResume from "../assets/Abdou's Resume.pdf";
 import LoadingScreen from "./Loading";
 
 const Home = () => {
@@ -223,13 +223,8 @@ const Home = () => {
                                 ></span>
                               </h4>
                               <p className="text-light-muted mt-2">
-                                Obviously I'm a Web Designer. Web Developer with
-                                over 3 years of experience. Experienced with all
-                                stages of the development cycle for dynamic web
-                                projects. The as opposed to using 'Content here,
-                                content here', making it look like readable
-                                English. A software Engineer with a successful
-                                track record in the information technology and
+                                A software Engineer with a successful track
+                                record in the information technology and
                                 services industries. Expertise in NodeJS,
                                 ReactJS, SpringBoot, Agile Software Development,
                                 Test Driven Development, Continuous Integration
