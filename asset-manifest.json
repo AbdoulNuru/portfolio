@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/portfolio/static/js/main.640de611.chunk.js",
-    "main.js.map": "/portfolio/static/js/main.640de611.chunk.js.map",
+    "main.js": "/portfolio/static/js/main.0a2e313f.chunk.js",
+    "main.js.map": "/portfolio/static/js/main.0a2e313f.chunk.js.map",
     "runtime-main.js": "/portfolio/static/js/runtime-main.1641258c.js",
     "runtime-main.js.map": "/portfolio/static/js/runtime-main.1641258c.js.map",
     "static/js/2.79770d20.chunk.js": "/portfolio/static/js/2.79770d20.chunk.js",
     "static/js/2.79770d20.chunk.js.map": "/portfolio/static/js/2.79770d20.chunk.js.map",
     "index.html": "/portfolio/index.html",
-    "precache-manifest.4217ec0f9b2b13afbd1940f25de3c079.js": "/portfolio/precache-manifest.4217ec0f9b2b13afbd1940f25de3c079.js",
+    "precache-manifest.030e568939ab18b01a4a73a4cf56e936.js": "/portfolio/precache-manifest.030e568939ab18b01a4a73a4cf56e936.js",
     "service-worker.js": "/portfolio/service-worker.js",
     "static/js/2.79770d20.chunk.js.LICENSE.txt": "/portfolio/static/js/2.79770d20.chunk.js.LICENSE.txt",
     "static/media/Abdou's Resume.pdf": "/portfolio/static/media/Abdou's Resume.54925782.pdf"
@@ -15,6 +15,6 @@
   "entrypoints": [
     "static/js/runtime-main.1641258c.js",
     "static/js/2.79770d20.chunk.js",
-    "static/js/main.640de611.chunk.js"
+    "static/js/main.0a2e313f.chunk.js"
   ]
 }
