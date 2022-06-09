@@ -101,13 +101,17 @@ const Home = () => {
                 <div className="col-lg-7 col-md-7 align-items-center">
                   <div className="title-heading mt-4 py--50">
                     <h1 className="heading">
-                      <span style={{ color: "#007BFF" }}> I am a </span>
+                      <span style={{ color: "#007BFF" }}>
+                        {" "}
+                        I am a Software Engineer, and I do
+                      </span>
                       <Typewriter
                         options={{
                           strings: [
-                            "Software Engineer",
-                            "DevOps Engineer",
-                            "& Mentor",
+                            "Front-end development",
+                            "Backend development",
+                            "Mobile development",
+                            "DevOps",
                           ],
                           autoStart: true,
                           loop: true,
@@ -490,7 +494,7 @@ const Home = () => {
           {/* Aho ubuhanga burangirira */}
 
           {/* Akazi kanjye */}
-          <section
+          {/* <section
             className="section bg-light"
             id="projects"
             style={{ backgroundImage: "url(img/bg-pattern.png)" }}
@@ -552,7 +556,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-          </section>
+          </section> */}
 
           {/* Aho akazi kanjye karangirira */}
 
