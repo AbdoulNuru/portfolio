@@ -10,32 +10,26 @@ const Skills = () => {
     {
       number: "01",
       title: "Frontend Development",
-      description: "Building responsive and interactive user interfaces with React, TypeScript, and modern CSS frameworks.",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Next.js", "Vue.js"]
+      description: "I build interfaces that feel fast and work everywhere. From component architecture to smooth animations to pixel-perfect layouts, I sweat the details users notice but can't quite name. If a user interacts with it, I've probably built something like it.",
+      technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"]
     },
     {
       number: "02",
-      title: "Backend Development",
-      description: "Creating robust server-side applications and APIs with Node.js, Python, and various databases.",
-      technologies: ["Node.js", "Python", "Express", "FastAPI", "PostgreSQL", "MongoDB"]
+      title: "Backend & APIs",
+      description: "REST APIs, background jobs, auth flows, payment integrations. I design backends that are easy to extend and hard to break, with data models that make sense six months later.",
+      technologies: ["Node.js", "Python", "Java", "Spring Boot", "Express", "FastAPI", "PostgreSQL", "MongoDB", "Redis"]
     },
     {
       number: "03",
-      title: "Cloud & DevOps",
-      description: "Deploying and maintaining applications on cloud platforms with CI/CD pipelines and monitoring.",
-      technologies: ["AWS", "Docker", "Kubernetes", "GitHub Actions", "Vercel"]
+      title: "Cloud & Infrastructure",
+      description: "CI/CD pipelines, containerized applications, and deployments the team can trust. If it runs in production, it should be monitored, reproducible, and easy to roll back.",
+      technologies: ["AWS", "Docker", "GitHub Actions", "Vercel", "Linux"]
     },
     {
       number: "04",
       title: "Mobile Development",
-      description: "Building cross-platform mobile applications with React Native and native technologies.",
-      technologies: ["React Native", "Flutter", "iOS", "Android", "Expo"]
-    },
-    {
-      number: "05",
-      title: "Database Design",
-      description: "Designing efficient database schemas and optimizing queries for better performance.",
-      technologies: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "Prisma"]
+      description: "Cross-platform apps built on React Native and Expo. I keep the stack small on purpose so I can move fast, share logic with the web, and ship native-feeling experiences without the overhead of two separate codebases.",
+      technologies: ["React Native", "Expo"]
     }
   ]
 
@@ -77,7 +71,7 @@ const Skills = () => {
               Skills & <span className="font-bold">Expertise</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Skills Polished, Expertise Verified.
+              The tools and technologies I use to bring products to life.
             </p>
             <div className="w-20 h-1 bg-blue-500 mx-auto mt-8"></div>
           </motion.div>
