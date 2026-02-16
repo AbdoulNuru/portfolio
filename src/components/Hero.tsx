@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
 import { useEffect, useState, useRef } from 'react'
-import { ChevronDown, Sparkles, Code, Zap, Globe } from 'lucide-react'
+import { ChevronDown, Sparkles, Github, Linkedin } from 'lucide-react'
+import TechScroller from './TechScroller'
 
 const Hero = () => {
   const [mounted, setMounted] = useState(false)
@@ -34,9 +35,9 @@ const Hero = () => {
   }, [mouseX, mouseY])
 
   const scrollToNext = () => {
-    const companiesElement = document.getElementById('companies')
-    if (companiesElement) {
-      const offsetTop = companiesElement.offsetTop - 100 // Account for navbar height
+    const aboutElement = document.getElementById('about')
+    if (aboutElement) {
+      const offsetTop = aboutElement.offsetTop - 100 // Account for navbar height
       window.scrollTo({ top: offsetTop, behavior: 'smooth' })
     }
   }
@@ -45,7 +46,7 @@ const Hero = () => {
     <motion.section 
       ref={heroRef}
       id="home" 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pb-32"
       style={{ y, opacity, scale }}
     >
       {/* Animated Background */}
@@ -112,9 +113,9 @@ const Hero = () => {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="relative"
           >
-            <h1 className="text-5xl sm:text-7xl lg:text-9xl font-light leading-tight">
-              <span className="inline-block">Hey, I'm </span>
-              <motion.span 
+            <h1 className="text-4xl sm:text-6xl lg:text-8xl font-light leading-tight">
+              <span className="inline-block">Hello, I'm</span>{' '}
+              <motion.span
                 className="font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent inline-block"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -137,36 +138,38 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-3xl sm:text-5xl lg:text-7xl font-light text-gray-300"
+            className="text-2xl sm:text-4xl lg:text-5xl font-light text-gray-300"
           >
             A <TypewriterText />
           </motion.h2>
         </div>
 
-        {/* Dynamic Stats */}
+        {/* Social Links */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
-          className="flex justify-center space-x-8 mb-8"
+          className="flex justify-center items-center space-x-5 mb-8"
         >
           {[
-            { icon: Code, label: "Projects", value: "50+" },
-            { icon: Zap, label: "Experience", value: "5+ Years" },
-            { icon: Globe, label: "Clients", value: "Global" }
-          ].map((stat, index) => (
-            <motion.div
-              key={stat.label}
+            { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/abdou-nuru-niyigena/", color: "hover:bg-[#0A66C2]/20 hover:border-[#0A66C2]/50 hover:text-[#0A66C2]" },
+            { icon: Github, label: "GitHub", href: "https://github.com/AbdoulNuru", color: "hover:bg-white/10 hover:border-white/30 hover:text-white" }
+          ].map((social, index) => (
+            <motion.a
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={social.label}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1 + index * 0.1 }}
-              whileHover={{ scale: 1.1, y: -5 }}
-              className="flex flex-col items-center p-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-blue-500/30 transition-all duration-300"
+              transition={{ delay: 1 + index * 0.15 }}
+              whileHover={{ scale: 1.15, y: -3 }}
+              whileTap={{ scale: 0.95 }}
+              className={`p-3 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm text-gray-400 transition-all duration-300 ${social.color}`}
             >
-              <stat.icon className="w-6 h-6 text-blue-400 mb-2" />
-              <span className="text-2xl font-bold text-white">{stat.value}</span>
-              <span className="text-sm text-gray-400">{stat.label}</span>
-            </motion.div>
+              <social.icon size={22} />
+            </motion.a>
           ))}
         </motion.div>
 
@@ -175,15 +178,9 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0 }}
-          className="text-lg sm:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed mb-8"
+          className="text-base sm:text-lg text-gray-400 max-w-4xl mx-auto leading-relaxed mb-8 cursor-default"
         >
-          With 5+ years of experience in full-stack development, I specialize in building 
-          <motion.span 
-            className="text-blue-400 font-medium"
-            whileHover={{ scale: 1.05 }}
-          > scalable web applications </motion.span>
-          and digital solutions that drive business growth and deliver exceptional user experiences. 
-          From fintech to e-commerce, I turn complex problems into elegant solutions.
+          <InteractiveText text="For the past 5+ years, I've been turning ideas into real products, from fintech platforms handling millions in transactions to tools people rely on every day. I thrive on hard problems, clean architecture, and building software that simply works." />
         </motion.p>
 
         {/* CTA Buttons */}
@@ -218,13 +215,18 @@ const Hero = () => {
 
       </div>
 
+      {/* Tech Scroller */}
+      <div className="absolute bottom-36 left-0 right-0 z-10">
+        <TechScroller />
+      </div>
+
       {/* Animated Scroll Indicator */}
       <motion.button
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4 }}
         onClick={scrollToNext}
-        className="absolute bottom-14 left-1/2 -translate-x-1/2 z-10 group flex flex-col items-center space-y-2 text-gray-400 hover:text-white transition-colors"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 group flex flex-col items-center space-y-2 text-gray-400 hover:text-white transition-colors"
       >
         <span className="text-sm font-medium">Scroll to explore</span>
         <motion.div
@@ -282,6 +284,27 @@ const TypewriterText = () => {
         |
       </motion.span>
     </motion.span>
+  )
+}
+
+// Interactive Text Component - word-level hover effect
+const InteractiveText = ({ text }: { text: string }) => {
+  const words = text.split(' ')
+
+  return (
+    <>
+      {words.map((word, index) => (
+        <span key={index}>
+          <span
+            className="transition-colors duration-300 hover:text-white"
+            style={{ display: 'inline-block' }}
+          >
+            {word}
+          </span>
+          {index < words.length - 1 ? ' ' : ''}
+        </span>
+      ))}
+    </>
   )
 }
 

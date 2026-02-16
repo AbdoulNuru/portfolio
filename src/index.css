@@ -100,6 +100,31 @@ html {
   animation: text-glow 3s ease-in-out infinite;
 }
 
+/* Infinite marquee scroller */
+.marquee {
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 /* Text selection */
 ::selection {
   background: rgba(59, 130, 246, 0.3);

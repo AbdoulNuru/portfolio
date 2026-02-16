@@ -5,7 +5,6 @@ import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Navigation from './components/Navigation'
-import CompanyLogos from './components/CompanyLogos'
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
       
       <main>
         <Hero />
-        <CompanyLogos />
         <About />
         <Skills />
         <Projects />
