@@ -1,31 +1,32 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react'
+import { useRef } from 'react'
+import { Mail, Github, Linkedin, ArrowUpRight, MapPin, Copy, Check } from 'lucide-react'
+import { useState } from 'react'
+
+const EMAIL = 'abdoulniyigena@gmail.com'
 
 const Contact = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  })
+  const [copied, setCopied] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
-    // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' })
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }))
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL)
+    } catch {
+      // Fallback for older browsers or restricted contexts
+      const textarea = document.createElement('textarea')
+      textarea.value = EMAIL
+      textarea.style.position = 'fixed'
+      textarea.style.opacity = '0'
+      document.body.appendChild(textarea)
+      textarea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textarea)
+    }
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
   }
 
   const containerVariants = {
@@ -33,7 +34,7 @@ const Contact = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.15,
         delayChildren: 0.2,
       },
     },
@@ -51,9 +52,26 @@ const Contact = () => {
     },
   }
 
+  const socials = [
+    {
+      icon: Github,
+      label: "GitHub",
+      href: "https://github.com/AbdoulNuru",
+      handle: "@AbdoulNuru",
+      color: "hover:border-white/30 hover:text-white",
+    },
+    {
+      icon: Linkedin,
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/abdou-nuru-niyigena/",
+      handle: "Abdoul Nuru",
+      color: "hover:border-[#0A66C2]/50 hover:text-[#0A66C2]",
+    },
+  ]
+
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-gray-950/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-24 lg:py-32">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -61,173 +79,91 @@ const Contact = () => {
           animate={isInView ? "visible" : "hidden"}
         >
           {/* Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <motion.div variants={itemVariants} className="text-center mb-12">
             <h2 className="text-4xl lg:text-6xl font-light mb-6">
-              Your Next Venture <span className="font-bold">Awaits</span>.
+              Let's <span className="font-bold">Work Together</span>
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Allow me to be part of your story by transforming your vision into stunning reality. 
-              Reach out today and let's start the journey.
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Have a project in mind, a role to fill, or just want to talk shop?
+              I'd love to hear what you're working on.
             </p>
             <div className="w-20 h-1 bg-blue-500 mx-auto mt-8"></div>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Contact Info */}
-            <motion.div variants={itemVariants} className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-semibold text-white mb-6">Get In Touch</h3>
-                <p className="text-gray-300 text-lg leading-relaxed mb-8">
-                  I'm always open to discussing new opportunities, interesting projects, 
-                  or just having a chat about technology and innovation. Let's create something amazing together.
-                </p>
-              </div>
+          {/* Email CTA */}
+          <motion.div variants={itemVariants} className="text-center mb-12">
+            <a
+              href={`mailto:${EMAIL}`}
+              className="group inline-flex items-center space-x-3 px-8 py-5 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-2xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 text-lg"
+            >
+              <Mail size={22} />
+              <span>{EMAIL}</span>
+              <ArrowUpRight size={20} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+            </a>
 
-              {/* Contact Details */}
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-500/20 border border-blue-500/30 rounded-full flex items-center justify-center">
-                    <Mail className="text-blue-400" size={20} />
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-sm">Email</p>
-                    <a href="mailto:abdoulnuru@example.com" className="text-white hover:text-blue-400 transition-colors">
-                      abdoulnuru@example.com
-                    </a>
-                  </div>
+            {/* Copy email button */}
+            <div className="mt-4">
+              <button
+                onClick={copyEmail}
+                className="inline-flex items-center space-x-2 text-sm text-gray-500 hover:text-gray-300 transition-colors duration-200"
+              >
+                {copied ? (
+                  <>
+                    <Check size={14} className="text-green-400" />
+                    <span className="text-green-400">Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy size={14} />
+                    <span>Copy email address</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </motion.div>
+
+          {/* Divider */}
+          <motion.div variants={itemVariants} className="flex items-center justify-center space-x-4 mb-12">
+            <div className="h-px w-16 bg-gray-800"></div>
+            <span className="text-sm text-gray-600 uppercase tracking-widest">or find me on</span>
+            <div className="h-px w-16 bg-gray-800"></div>
+          </motion.div>
+
+          {/* Social Links */}
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-12">
+            {socials.map(({ icon: Icon, label, href, handle, color }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group flex items-center space-x-3 px-6 py-4 bg-gray-900/50 border border-gray-800 rounded-xl transition-all duration-300 ${color} hover:bg-gray-900/80`}
+              >
+                <Icon size={20} className="shrink-0" />
+                <div className="text-left">
+                  <p className="text-sm font-medium text-white">{label}</p>
+                  <p className="text-xs text-gray-500">{handle}</p>
                 </div>
+                <ArrowUpRight size={16} className="text-gray-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+              </a>
+            ))}
+          </motion.div>
 
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-green-500/20 border border-green-500/30 rounded-full flex items-center justify-center">
-                    <Phone className="text-green-400" size={20} />
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-sm">Phone</p>
-                    <a href="tel:+250123456789" className="text-white hover:text-green-400 transition-colors">
-                      +250 123 456 789
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-purple-500/20 border border-purple-500/30 rounded-full flex items-center justify-center">
-                    <MapPin className="text-purple-400" size={20} />
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-sm">Location</p>
-                    <p className="text-white">Kigali, Rwanda</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Links */}
-              <div className="pt-8">
-                <h4 className="text-lg font-semibold text-white mb-4">Follow Me</h4>
-                <div className="flex space-x-4">
-                  {[
-                    { icon: Github, href: "#", label: "GitHub" },
-                    { icon: Linkedin, href: "#", label: "LinkedIn" },
-                    { icon: Twitter, href: "#", label: "Twitter" }
-                  ].map(({ icon: Icon, href, label }) => (
-                    <a
-                      key={label}
-                      href={href}
-                      className="w-12 h-12 bg-gray-800/50 border border-gray-700 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-200"
-                      aria-label={label}
-                    >
-                      <Icon size={20} />
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Contact Form */}
-            <motion.div variants={itemVariants}>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                      Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-gray-900/80 transition-all duration-200"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-gray-900/80 transition-all duration-200"
-                      placeholder="your.email@example.com"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
-                    Subject *
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-gray-900/80 transition-all duration-200"
-                    placeholder="What's this about?"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={6}
-                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-gray-900/80 transition-all duration-200 resize-none"
-                    placeholder="Tell me about your project..."
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center space-x-2 group"
-                >
-                  <span>Send Message</span>
-                  <Send size={18} className="group-hover:translate-x-1 transition-transform duration-200" />
-                </button>
-              </form>
-            </motion.div>
-          </div>
+          {/* Location */}
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 text-gray-500">
+              <MapPin size={16} />
+              <span className="text-sm">Based in Kigali, Rwanda</span>
+            </div>
+          </motion.div>
 
           {/* Footer */}
           <motion.div
             variants={itemVariants}
-            className="text-center pt-16 mt-16 border-t border-gray-800"
+            className="text-center pt-12 border-t border-gray-800/50"
           >
-            <p className="text-gray-400">
-              © 2024 Abdoul Nuru. All rights reserved. Built with React & Tailwind CSS.
+            <p className="text-gray-600 text-sm">
+              &copy; {new Date().getFullYear()} Abdoul Nuru. Built with React & Tailwind CSS.
             </p>
           </motion.div>
         </motion.div>
