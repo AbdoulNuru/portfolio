@@ -46,7 +46,7 @@ const Hero = () => {
     <motion.section 
       ref={heroRef}
       id="home" 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden pb-16 sm:pb-24 lg:pb-32"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-28 sm:pt-32 pb-16 sm:pb-24 lg:pb-32"
       style={{ y, opacity, scale }}
     >
       {/* Animated Background */}
@@ -84,7 +84,7 @@ const Hero = () => {
       <ParticleField mousePosition={mousePosition} />
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 relative">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 relative">
         
         {/* Availability Badge with Animation */}
         <motion.div
@@ -106,7 +106,7 @@ const Hero = () => {
         </motion.div>
 
         {/* Main Heading with Stagger Animation */}
-        <div className="space-y-6 mb-8">
+        <div className="space-y-4 sm:space-y-6 mb-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -149,7 +149,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
-          className="flex justify-center items-center space-x-5 mb-8"
+          className="flex justify-center items-center space-x-5 mb-6 sm:mb-8"
         >
           {[
             { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/abdou-nuru-niyigena/", color: "hover:bg-[#0A66C2]/20 hover:border-[#0A66C2]/50 hover:text-[#0A66C2]" },
@@ -188,7 +188,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2 }}
-          className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-12"
+          className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-8 sm:mb-12"
         >
           <motion.button
             whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }}
@@ -213,20 +213,25 @@ const Hero = () => {
           </motion.button>
         </motion.div>
 
+        {/* Tech Scroller - in flow on mobile, absolute on lg */}
+        <div className="mt-8 lg:hidden">
+          <TechScroller />
+        </div>
+
       </div>
 
-      {/* Tech Scroller */}
-      <div className="absolute bottom-20 sm:bottom-36 left-0 right-0 z-10">
+      {/* Tech Scroller - absolute on lg+ only */}
+      <div className="hidden lg:block absolute bottom-36 left-0 right-0 z-10">
         <TechScroller />
       </div>
 
-      {/* Animated Scroll Indicator */}
+      {/* Scroll Indicator - absolute on lg+ only */}
       <motion.button
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4 }}
         onClick={scrollToNext}
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 group flex flex-col items-center space-y-2 text-gray-400 hover:text-white transition-colors"
+        className="hidden lg:flex absolute bottom-4 left-1/2 -translate-x-1/2 z-10 group flex-col items-center space-y-2 text-gray-400 hover:text-white transition-colors"
       >
         <span className="text-sm font-medium">Scroll to explore</span>
         <motion.div

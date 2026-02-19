@@ -97,7 +97,7 @@ const Skills = () => {
                     <h3 className="text-2xl lg:text-3xl font-semibold text-white group-hover:text-blue-400 transition-colors duration-300">
                       {skill.title}
                     </h3>
-                    <p className="text-lg text-gray-300 leading-relaxed">
+                    <p className="text-base lg:text-lg text-gray-300 leading-relaxed">
                       {skill.description}
                     </p>
                   </div>

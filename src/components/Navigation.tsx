@@ -29,7 +29,14 @@ const Navigation = () => {
 
   const handleNavClick = (href: string) => {
     setIsOpen(false)
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+    // Delay scroll to let mobile menu close animation finish
+    setTimeout(() => {
+      const element = document.querySelector(href)
+      if (element) {
+        const offset = element.getBoundingClientRect().top + window.scrollY - 100
+        window.scrollTo({ top: offset, behavior: 'smooth' })
+      }
+    }, 300)
   }
 
   return (
@@ -67,7 +74,7 @@ const Navigation = () => {
               <a 
                 href="#home" 
                 onClick={(e) => { e.preventDefault(); handleNavClick('#home') }}
-                className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent hover:from-blue-300 hover:to-purple-300 transition-all duration-300"
+                className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent hover:from-blue-300 hover:to-purple-300 transition-all duration-300 whitespace-nowrap"
               >
                 Abdoul Nuru
               </a>
@@ -75,7 +82,7 @@ const Navigation = () => {
             </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-1">
+            <div className="hidden lg:flex items-center space-x-1">
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.name}
@@ -88,7 +95,7 @@ const Navigation = () => {
                   className="relative group px-4 py-2 rounded-xl text-gray-300 hover:text-white transition-all duration-300 hover:bg-white/10"
                 >
                   <div className="flex items-center space-x-2">
-                    <item.icon size={16} className="opacity-70 group-hover:opacity-100" />
+                    <item.icon size={16} className="opacity-70 group-hover:opacity-100 hidden xl:block" />
                     <span className="font-medium">{item.name}</span>
                   </div>
                   
@@ -105,7 +112,7 @@ const Navigation = () => {
                 transition={{ delay: 0.8 }}
                 whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)" }}
                 whileTap={{ scale: 0.95 }}
-                className="ml-4 px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center space-x-2 group"
+                className="ml-4 px-4 xl:px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center space-x-2 group"
               >
                 <Download size={16} className="group-hover:rotate-12 transition-transform duration-300" />
                 <span>Resume</span>
@@ -113,7 +120,7 @@ const Navigation = () => {
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden">
+            <div className="lg:hidden">
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -148,7 +155,7 @@ const Navigation = () => {
           height: isOpen ? 'auto' : 0 
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="fixed top-24 left-4 right-4 z-40 md:hidden overflow-hidden"
+        className="fixed top-20 left-4 right-4 z-40 lg:hidden overflow-hidden"
       >
         <div className="bg-black/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-xl shadow-black/20">
           <div className="p-6 space-y-4">
@@ -194,7 +201,7 @@ const Navigation = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setIsOpen(false)}
-          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-30 md:hidden"
+          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-30 lg:hidden"
         />
       )}
     </>

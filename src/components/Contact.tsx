@@ -83,7 +83,7 @@ const Contact = () => {
             <h2 className="text-4xl lg:text-6xl font-light mb-6">
               Let's <span className="font-bold">Work Together</span>
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto">
               Have a project in mind, a role to fill, or just want to talk shop?
               I'd love to hear what you're working on.
             </p>
