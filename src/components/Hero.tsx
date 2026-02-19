@@ -46,7 +46,7 @@ const Hero = () => {
     <motion.section 
       ref={heroRef}
       id="home" 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden pb-32"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pb-16 sm:pb-24 lg:pb-32"
       style={{ y, opacity, scale }}
     >
       {/* Animated Background */}
@@ -193,7 +193,7 @@ const Hero = () => {
           <motion.button
             whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-2xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center space-x-2 group"
+            className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-2xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center justify-center space-x-2 group"
           >
             <span>View My Work</span>
             <motion.div
@@ -207,7 +207,7 @@ const Hero = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-2xl border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
+            className="w-full sm:w-auto px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-2xl border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
           >
             Let's Talk
           </motion.button>
@@ -216,7 +216,7 @@ const Hero = () => {
       </div>
 
       {/* Tech Scroller */}
-      <div className="absolute bottom-36 left-0 right-0 z-10">
+      <div className="absolute bottom-20 sm:bottom-36 left-0 right-0 z-10">
         <TechScroller />
       </div>
 

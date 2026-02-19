@@ -87,7 +87,7 @@ const Skills = () => {
                 <div className="grid lg:grid-cols-12 gap-8 items-center py-8 border-b border-gray-800/50 last:border-b-0">
                   {/* Number */}
                   <div className="lg:col-span-1">
-                    <span className="text-6xl lg:text-7xl font-light text-gray-600 group-hover:text-blue-500 transition-colors duration-300">
+                    <span className="text-4xl sm:text-5xl lg:text-7xl font-light text-gray-600 group-hover:text-blue-500 transition-colors duration-300">
                       {skill.number}
                     </span>
                   </div>

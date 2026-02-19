@@ -131,18 +131,6 @@ html {
   color: #fff;
 }
 
-/* Focus styles */
-*:focus {
-  outline: none;
-}
-
-button:focus,
-a:focus,
-input:focus,
-textarea:focus {
-  outline: none;
-}
-
 /* Custom focus styles for accessibility */
 button:focus-visible,
 a:focus-visible {

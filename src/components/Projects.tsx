@@ -94,7 +94,7 @@ const Projects = () => {
           </motion.div>
 
           {/* Projects */}
-          <div className="space-y-16">
+          <div className="space-y-8 lg:space-y-16">
             {featuredProjects.map((project, index) => {
               const isEven = index % 2 === 0
 

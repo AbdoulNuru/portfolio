@@ -118,7 +118,7 @@ const Navigation = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className="relative p-2 text-white hover:text-blue-400 transition-colors rounded-lg hover:bg-white/10"
+                className="relative p-3 text-white hover:text-blue-400 transition-colors rounded-lg hover:bg-white/10"
               >
                 <div className="w-6 h-6 relative">
                   <motion.div

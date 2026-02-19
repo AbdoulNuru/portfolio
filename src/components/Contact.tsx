@@ -94,7 +94,7 @@ const Contact = () => {
           <motion.div variants={itemVariants} className="text-center mb-12">
             <a
               href={`mailto:${EMAIL}`}
-              className="group inline-flex items-center space-x-3 px-8 py-5 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-2xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 text-lg"
+              className="group inline-flex items-center space-x-3 px-5 sm:px-8 py-4 sm:py-5 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-2xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 text-base sm:text-lg"
             >
               <Mail size={22} />
               <span>{EMAIL}</span>
@@ -137,7 +137,7 @@ const Contact = () => {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group flex items-center space-x-3 px-6 py-4 bg-gray-900/50 border border-gray-800 rounded-xl transition-all duration-300 ${color} hover:bg-gray-900/80`}
+                className={`group flex items-center space-x-3 px-6 py-4 bg-gray-900/50 border border-gray-800 rounded-xl transition-all duration-300 w-full sm:w-auto ${color} hover:bg-gray-900/80`}
               >
                 <Icon size={20} className="shrink-0" />
                 <div className="text-left">

@@ -77,7 +77,7 @@ const About = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid lg:grid-cols-2 gap-16 items-start"
+          className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start"
         >
           {/* Left Column - Main Content */}
           <div className="space-y-8">
