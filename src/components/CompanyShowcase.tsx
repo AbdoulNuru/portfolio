@@ -86,7 +86,7 @@ const CompanyShowcase = () => {
           viewport={{ once: true }}
           className="flex justify-center space-x-12 mb-16"
         >
-          {statsData.map((stat, index) => (
+          {statsData.map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="flex items-center justify-center mb-2">
                 <stat.icon className="w-5 h-5 text-blue-400 mr-2" />

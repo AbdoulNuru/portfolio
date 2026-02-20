@@ -1,19 +1,16 @@
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
+import { motion, useScroll, useTransform, useMotionValue } from 'framer-motion'
 import { useEffect, useState, useRef } from 'react'
 import { ChevronDown, Sparkles, Github, Linkedin } from 'lucide-react'
 import TechScroller from './TechScroller'
 
 const Hero = () => {
-  const [mounted, setMounted] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const heroRef = useRef<HTMLElement>(null)
   const { scrollY } = useScroll()
-  
+
   // Mouse tracking for interactive effects
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
-  const springX = useSpring(mouseX, { stiffness: 100, damping: 10 })
-  const springY = useSpring(mouseY, { stiffness: 100, damping: 10 })
 
   // Scroll-based transformations
   const y = useTransform(scrollY, [0, 1000], [0, -200])
@@ -21,8 +18,6 @@ const Hero = () => {
   const scale = useTransform(scrollY, [0, 300], [1, 0.95])
 
   useEffect(() => {
-    setMounted(true)
-    
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e
       setMousePosition({ x: clientX, y: clientY })
@@ -330,6 +325,9 @@ const ParticleField = ({ mousePosition }: { mousePosition: { x: number; y: numbe
     speed: Math.random() * 0.5 + 0.1,
   }))
 
+  const mouseOffsetX = (mousePosition.x / (typeof window !== 'undefined' ? window.innerWidth : 1) - 0.5) * 20
+  const mouseOffsetY = (mousePosition.y / (typeof window !== 'undefined' ? window.innerHeight : 1) - 0.5) * 20
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {particles.map((particle) => (
@@ -341,8 +339,8 @@ const ParticleField = ({ mousePosition }: { mousePosition: { x: number; y: numbe
             height: particle.size,
           }}
           animate={{
-            x: [particle.x, particle.x + 100, particle.x],
-            y: [particle.y, particle.y - 100, particle.y],
+            x: [particle.x + mouseOffsetX, particle.x + 100 + mouseOffsetX, particle.x + mouseOffsetX],
+            y: [particle.y + mouseOffsetY, particle.y - 100 + mouseOffsetY, particle.y + mouseOffsetY],
             opacity: [0.3, 0.8, 0.3],
           }}
           transition={{

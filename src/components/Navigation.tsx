@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useState, useEffect } from 'react'
-import { Menu, X, Home, User, Code, Briefcase, Mail, Download } from 'lucide-react'
+import { Home, User, Code, Briefcase, Mail, Download } from 'lucide-react'
 
 interface NavigationProps {
   onResumeClick?: () => void

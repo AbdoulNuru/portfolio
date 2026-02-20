@@ -78,7 +78,7 @@ const Skills = () => {
 
           {/* Skills Grid */}
           <div className="space-y-8">
-            {skills.map((skill, index) => (
+            {skills.map((skill) => (
               <motion.div
                 key={skill.number}
                 variants={itemVariants}

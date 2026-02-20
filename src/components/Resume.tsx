@@ -4,7 +4,6 @@ import {
   ArrowLeft,
   Download,
   Mail,
-  Phone,
   Code2,
   Languages,
 } from 'lucide-react'
