@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#111827"/>
+
+  <!-- Subtle grid pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f2937" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.5"/>
+
+  <!-- Accent line top -->
+  <rect x="0" y="0" width="1200" height="4" fill="#D4845A"/>
+
+  <!-- Decorative circle -->
+  <circle cx="1050" cy="150" r="200" fill="#D4845A" opacity="0.05"/>
+  <circle cx="150" cy="500" r="150" fill="#D4845A" opacity="0.03"/>
+
+  <!-- Name -->
+  <text x="100" y="260" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="64" font-weight="800" fill="#D4845A" letter-spacing="4">ABDOU NURU</text>
+  <text x="100" y="340" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="64" font-weight="800" fill="#D4845A" letter-spacing="4">NIYIGENA</text>
+
+  <!-- Title -->
+  <text x="100" y="400" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="24" font-weight="400" fill="#9CA3AF" letter-spacing="2">FULL-STACK SOFTWARE ENGINEER</text>
+
+  <!-- Accent separator -->
+  <rect x="100" y="425" width="80" height="3" rx="1.5" fill="#D4845A"/>
+
+  <!-- Description -->
+  <text x="100" y="475" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="20" fill="#6B7280">5+ years building fintech &amp; banking platforms</text>
+  <text x="100" y="505" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="20" fill="#6B7280">React  ·  TypeScript  ·  Node.js  ·  Spring Boot</text>
+
+  <!-- Website -->
+  <text x="100" y="570" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="18" fill="#D4845A" letter-spacing="1">abdounuru.com</text>
+</svg>

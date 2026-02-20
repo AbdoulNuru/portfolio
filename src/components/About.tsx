@@ -71,7 +71,7 @@ const About = () => {
 
   return (
     <section id="about" className="py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
         <motion.div
           ref={ref}
           variants={containerVariants}

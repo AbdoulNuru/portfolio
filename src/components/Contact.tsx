@@ -71,7 +71,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-24 lg:py-32">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-8">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -158,14 +158,14 @@ const Contact = () => {
           </motion.div>
 
           {/* Footer */}
-          <motion.div
+          <motion.footer
             variants={itemVariants}
             className="text-center pt-12 border-t border-gray-800/50"
           >
             <p className="text-gray-600 text-sm">
-              &copy; {new Date().getFullYear()} Abdoul Nuru. Built with React & Tailwind CSS.
+              &copy; {new Date().getFullYear()} Abdou Nuru.
             </p>
-          </motion.div>
+          </motion.footer>
         </motion.div>
       </div>
     </section>

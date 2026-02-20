@@ -75,7 +75,7 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-16 lg:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -119,8 +119,12 @@ const Projects = () => {
                         <BrowserFrame url={project.url}>
                           <img
                             src={project.image}
-                            alt={project.title}
+                            alt={`Screenshot of ${project.title} project`}
                             className="w-full aspect-[16/10] object-cover"
+                            loading="lazy"
+                            decoding="async"
+                            width={800}
+                            height={500}
                           />
                         </BrowserFrame>
                       </motion.div>
@@ -163,6 +167,7 @@ const Projects = () => {
                             href={project.demo}
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`Visit ${project.title} live site (opens in new tab)`}
                             className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors group/link"
                           >
                             <ExternalLink size={18} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
@@ -174,6 +179,7 @@ const Projects = () => {
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`View ${project.title} source code on GitHub (opens in new tab)`}
                             className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors group/link"
                           >
                             <Github size={18} className="group-hover/link:scale-110 transition-transform" />

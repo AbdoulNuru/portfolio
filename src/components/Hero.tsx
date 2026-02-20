@@ -81,7 +81,9 @@ const Hero = () => {
       </div>
 
       {/* Interactive Particles */}
-      <ParticleField mousePosition={mousePosition} />
+      <div aria-hidden="true">
+        <ParticleField mousePosition={mousePosition} />
+      </div>
 
       {/* Main Content */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 relative">
@@ -193,10 +195,12 @@ const Hero = () => {
           <motion.button
             whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-2xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center justify-center space-x-2 group"
           >
             <span>View My Work</span>
             <motion.div
+              aria-hidden="true"
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
@@ -207,6 +211,7 @@ const Hero = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             className="w-full sm:w-auto px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-2xl border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
           >
             Let's Talk
@@ -244,14 +249,16 @@ const Hero = () => {
       </motion.button>
 
       {/* Floating Elements */}
-      <FloatingElements />
+      <div aria-hidden="true">
+        <FloatingElements />
+      </div>
     </motion.section>
   )
 }
 
 // Typewriter Text Component
 const TypewriterText = () => {
-  const texts = ["Software Developer", "Full-Stack Engineer", "Problem Solver", "Digital Creator"]
+  const texts = ["Full-Stack Engineer", "Fintech Builder", "Systems Thinker", "Product Engineer"]
   const [currentIndex, setCurrentIndex] = useState(0)
   const [displayText, setDisplayText] = useState("")
   const [isDeleting, setIsDeleting] = useState(false)

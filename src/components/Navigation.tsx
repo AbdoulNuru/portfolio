@@ -2,7 +2,11 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { Menu, X, Home, User, Code, Briefcase, Mail, Download } from 'lucide-react'
 
-const Navigation = () => {
+interface NavigationProps {
+  onResumeClick?: () => void
+}
+
+const Navigation = ({ onResumeClick }: NavigationProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { scrollY } = useScroll()
@@ -53,9 +57,9 @@ const Navigation = () => {
             backgroundColor: `rgba(0, 0, 0, ${backgroundOpacity})`,
             backdropFilter: `blur(${blurAmount}px)`,
           }}
-          className={`max-w-7xl mx-auto rounded-2xl border transition-all duration-300 ${
-            scrolled 
-              ? 'border-white/20 shadow-lg shadow-black/20' 
+          className={`relative overflow-hidden max-w-7xl mx-auto rounded-2xl border transition-all duration-300 ${
+            scrolled
+              ? 'border-white/20 shadow-lg shadow-black/20'
               : 'border-white/10 shadow-md shadow-black/10'
           }`}
         >
@@ -107,6 +111,7 @@ const Navigation = () => {
               
               {/* CTA Button */}
               <motion.button
+                onClick={onResumeClick}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.8 }}
@@ -125,6 +130,8 @@ const Navigation = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle navigation menu"
+                aria-expanded={isOpen}
                 className="relative p-3 text-white hover:text-blue-400 transition-colors rounded-lg hover:bg-white/10"
               >
                 <div className="w-6 h-6 relative">
@@ -179,10 +186,11 @@ const Navigation = () => {
             
             {/* Mobile CTA */}
             <motion.button
+              onClick={() => { setIsOpen(false); onResumeClick?.() }}
               initial={{ opacity: 0, y: 20 }}
-              animate={{ 
-                opacity: isOpen ? 1 : 0, 
-                y: isOpen ? 0 : 20 
+              animate={{
+                opacity: isOpen ? 1 : 0,
+                y: isOpen ? 0 : 20
               }}
               transition={{ delay: 0.5 }}
               className="w-full mt-4 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center justify-center space-x-2"
