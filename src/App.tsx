@@ -1,4 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
@@ -36,9 +37,12 @@ function App() {
 
   if (view === 'resume') {
     return (
-      <Suspense fallback={<div className="min-h-screen bg-gray-200 flex items-center justify-center"><div className="text-gray-500">Loading...</div></div>}>
-        <Resume onBack={handleBackToPortfolio} />
-      </Suspense>
+      <>
+        <Suspense fallback={<div className="min-h-screen bg-gray-200 flex items-center justify-center"><div className="text-gray-500">Loading...</div></div>}>
+          <Resume onBack={handleBackToPortfolio} />
+        </Suspense>
+        <Analytics />
+      </>
     )
   }
 
@@ -60,6 +64,8 @@ function App() {
         <div className="absolute top-0 left-1/4 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
       </div>
+
+      <Analytics />
     </div>
   )
 }
