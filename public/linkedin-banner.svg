@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1584" height="396" viewBox="0 0 1584 396">
+  <!-- Background -->
+  <rect width="1584" height="396" fill="#0a0a0a"/>
+
+  <!-- Subtle grid pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1a2e" stroke-width="0.5"/>
+    </pattern>
+    <linearGradient id="orbGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.03"/>
+    </linearGradient>
+    <linearGradient id="orbGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.06"/>
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0.02"/>
+    </linearGradient>
+  </defs>
+  <rect width="1584" height="396" fill="url(#grid)" opacity="0.4"/>
+
+  <!-- Accent line top -->
+  <rect x="0" y="0" width="1584" height="3" fill="#D4845A"/>
+
+  <!-- Decorative gradient orbs -->
+  <circle cx="1300" cy="100" r="250" fill="url(#orbGradient1)"/>
+  <circle cx="400" cy="380" r="180" fill="url(#orbGradient2)"/>
+  <circle cx="800" cy="-50" r="180" fill="#D4845A" opacity="0.025"/>
+
+  <!-- Center layout: Tagline (shifted right to avoid profile photo overlap) -->
+
+  <!-- Tagline: Ideas → Architecture → Production -->
+  <text x="792" y="160" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="46" text-anchor="middle" letter-spacing="2">
+    <tspan fill="#ffffff" font-weight="300">Ideas  </tspan>
+    <tspan fill="#D4845A" font-weight="300">→  </tspan>
+    <tspan fill="#ffffff" font-weight="600">Architecture  </tspan>
+    <tspan fill="#D4845A" font-weight="300">→  </tspan>
+    <tspan fill="#D4845A" font-weight="800">Production</tspan>
+  </text>
+
+  <!-- Accent separator -->
+  <rect x="757" y="185" width="70" height="3" rx="1.5" fill="#D4845A"/>
+
+  <!-- Subtitle -->
+  <text x="792" y="225" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="20" font-weight="400" fill="#9CA3AF" text-anchor="middle" letter-spacing="3">FULL-STACK SOFTWARE ENGINEER</text>
+
+  <!-- AN Monogram - top right area, large ghost text -->
+  <text x="1350" y="160" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="120" font-weight="200" fill="#ffffff" text-anchor="middle" letter-spacing="10" opacity="0.06">AN</text>
+
+  <!-- Monogram accent version on top -->
+  <text x="1350" y="160" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="75" font-weight="700" fill="#D4845A" text-anchor="middle" letter-spacing="8" opacity="0.7">AN</text>
+
+  <!-- Domain with globe icon - moved up to be visible on LinkedIn -->
+  <circle cx="1290" cy="280" r="8" fill="none" stroke="#D4845A" stroke-width="1.2"/>
+  <line x1="1290" y1="272" x2="1290" y2="288" stroke="#D4845A" stroke-width="0.8"/>
+  <line x1="1282" y1="280" x2="1298" y2="280" stroke="#D4845A" stroke-width="0.8"/>
+  <ellipse cx="1290" cy="280" rx="4.5" ry="8" fill="none" stroke="#D4845A" stroke-width="0.8"/>
+  <text x="1306" y="285" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="16" fill="#D4845A" letter-spacing="1">abdounuru.com</text>
+</svg>

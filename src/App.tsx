@@ -1,5 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
@@ -42,6 +43,7 @@ function App() {
           <Resume onBack={handleBackToPortfolio} />
         </Suspense>
         <Analytics />
+        <SpeedInsights />
       </>
     )
   }
@@ -66,6 +68,7 @@ function App() {
       </div>
 
       <Analytics />
+      <SpeedInsights />
     </div>
   )
 }
