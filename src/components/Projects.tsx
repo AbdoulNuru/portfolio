@@ -37,7 +37,7 @@ const allProjects: Project[] = [
     number: "01",
     title: "Patrick Nzabonimpa",
     category: "Author website",
-    tagline: "A literary home for a Rwandan writer, editor and journalist.",
+    tagline: "A literary home for a Rwandan writer and editor.",
     description: "Built a digital home for a Rwandan author to showcase published works, connect with readers, and offer editorial services. Designed to feel as personal as the writing itself.",
     technologies: ["WordPress", "Custom Theme", "PHP", "JavaScript", "SEO"],
     url: "patricknzabonimpa.com",
