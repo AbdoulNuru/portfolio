@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from 'react'
+import { useState, useEffect, useLayoutEffect, useRef, lazy, Suspense, startTransition } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import Hero from './components/Hero'
@@ -24,16 +24,29 @@ function App() {
     return () => window.removeEventListener('popstate', handlePopState)
   }, [])
 
+  // Set by the Resume/Back buttons so the new view opens at the top.
+  // Browser back/forward (popstate) leaves the scroll position alone, as before.
+  const scrollToTopOnSwitch = useRef(false)
+
+  useLayoutEffect(() => {
+    if (scrollToTopOnSwitch.current) {
+      scrollToTopOnSwitch.current = false
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    }
+  }, [view])
+
+  // The view switch mounts a whole page. As a transition it doesn't block the
+  // click from painting, which kept these buttons in the slow INP range.
   const handleResumeClick = () => {
-    setView('resume')
+    scrollToTopOnSwitch.current = true
     window.history.pushState({}, '', '/resume')
-    window.scrollTo({ top: 0 })
+    startTransition(() => setView('resume'))
   }
 
   const handleBackToPortfolio = () => {
-    setView('portfolio')
+    scrollToTopOnSwitch.current = true
     window.history.pushState({}, '', '/')
-    window.scrollTo({ top: 0 })
+    startTransition(() => setView('portfolio'))
   }
 
   if (view === 'resume') {
