@@ -3,13 +3,13 @@ import { useRef, type CSSProperties, type PointerEvent, type ReactNode } from 'r
 import { ArrowRight, ArrowUpRight, Lock, MousePointer2 } from 'lucide-react'
 import patrickDesktop800 from '../assets/images/projects/patrick-desktop-800.webp'
 import patrickDesktop1200 from '../assets/images/projects/patrick-desktop-1200.webp'
-import patrickMobile from '../assets/images/projects/patrick-mobile-480.webp'
+import patrickMobile from '../assets/images/projects/patrick-mobile-400.webp'
 import phoneinsideDesktop800 from '../assets/images/projects/phoneinside-desktop-800.webp'
 import phoneinsideDesktop1200 from '../assets/images/projects/phoneinside-desktop-1200.webp'
-import phoneinsideMobile from '../assets/images/projects/phoneinside-mobile-480.webp'
+import phoneinsideMobile from '../assets/images/projects/phoneinside-mobile-400.webp'
 import mugishaDesktop800 from '../assets/images/projects/mugisha-desktop-800.webp'
 import mugishaDesktop1200 from '../assets/images/projects/mugisha-desktop-1200.webp'
-import mugishaMobile from '../assets/images/projects/mugisha-mobile-480.webp'
+import mugishaMobile from '../assets/images/projects/mugisha-mobile-400.webp'
 
 interface Project {
   number: string
@@ -21,13 +21,13 @@ interface Project {
   url: string
   demo: string
   accent: string
-  // Full-page captures of the live site: desktop at 1440px, mobile at 390px (first three screens)
+  // Full-page captures of the live site: desktop at 1440px, mobile at 390px
   shots: {
     desktop800: string
     desktop1200: string
     desktopHeight: number // at 1200px wide
     mobile: string
-    mobileHeight: number // at 480px wide
+    mobileHeight: number // at 400px wide
   }
 }
 
@@ -48,7 +48,7 @@ const allProjects: Project[] = [
       desktop1200: patrickDesktop1200,
       desktopHeight: 4259,
       mobile: patrickMobile,
-      mobileHeight: 3116,
+      mobileHeight: 7418,
     },
   },
   {
@@ -66,7 +66,7 @@ const allProjects: Project[] = [
       desktop1200: phoneinsideDesktop1200,
       desktopHeight: 4784,
       mobile: phoneinsideMobile,
-      mobileHeight: 3116,
+      mobileHeight: 7626,
     },
   },
   {
@@ -84,7 +84,7 @@ const allProjects: Project[] = [
       desktop1200: mugishaDesktop1200,
       desktopHeight: 3970,
       mobile: mugishaMobile,
-      mobileHeight: 3116,
+      mobileHeight: 7669,
     },
   },
 ]
@@ -141,7 +141,7 @@ const PhoneFrame = ({ children }: { children: ReactNode }) => (
 // itself while it's on screen.
 const ProjectStage = ({ project, reversed }: { project: Project; reversed: boolean }) => {
   const ref = useRef<HTMLAnchorElement>(null)
-  const inView = useInView(ref, { amount: 0.35 })
+  const inView = useInView(ref, { amount: 0.3 })
 
   // Pointer position over the stage, -0.5 to 0.5. Motion values keep this off React state.
   const pointerX = useMotionValue(0)
@@ -217,8 +217,8 @@ const ProjectStage = ({ project, reversed }: { project: Project; reversed: boole
                 src={shots.mobile}
                 alt={`${project.title} website on mobile`}
                 className="project-scroll absolute inset-x-0 top-0 w-full"
-                style={scrollVars(shots.mobileHeight / 480, PHONE_SCREEN, duration)}
-                width={480}
+                style={scrollVars(shots.mobileHeight / 400, PHONE_SCREEN, duration)}
+                width={400}
                 height={shots.mobileHeight}
                 loading="lazy"
                 decoding="async"
