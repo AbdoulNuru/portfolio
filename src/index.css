@@ -231,6 +231,47 @@ html {
   50% { opacity: 1; }
 }
 
+/* Project previews. Hovering (or focusing) a stage scrolls the captured page
+   through its screen; transform-only, so it runs on the compositor.
+   --scroll-end and --scroll-duration are set per image in Projects.tsx. */
+.project-scroll {
+  transform: translateY(0);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-stage:hover .project-scroll,
+.project-stage:focus-visible .project-scroll {
+  transform: translateY(var(--scroll-end));
+  transition: transform var(--scroll-duration) cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+/* Touch screens can't hover: scroll on a loop while the stage is on screen */
+@media (hover: none) {
+  .project-stage.is-inview .project-scroll {
+    animation: project-autoscroll calc(var(--scroll-duration) * 2.6) ease-in-out infinite;
+  }
+}
+
+@keyframes project-autoscroll {
+  0%, 15% { transform: translateY(0); }
+  50%, 65% { transform: translateY(var(--scroll-end)); }
+  100% { transform: translateY(0); }
+}
+
+.project-numeral {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.18);
+}
+
+.project-cta {
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.project-cta:hover {
+  background-color: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
 /* Infinite marquee scroller */
 .marquee {
   width: 100%;
@@ -330,5 +371,11 @@ textarea {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  /* Without motion the previews would jump straight to the page footer */
+  .project-scroll {
+    transform: none !important;
+    animation: none !important;
   }
 }
