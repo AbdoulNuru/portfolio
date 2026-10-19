@@ -260,14 +260,22 @@ const InteractiveText = ({ text }: { text: string }) => {
 }
 
 // Particle Field Component
-// Positions are generated once per page load. They used to be regenerated on
-// every render, so each mouse move made all 50 particles jump.
+// Positions are generated once, from a fixed seed (mulberry32): the pre-rendered
+// HTML and the browser must place the particles identically for hydration.
+const seededRandom = (seed: number) => () => {
+  seed = (seed + 0x6d2b79f5) | 0
+  let t = Math.imul(seed ^ (seed >>> 15), 1 | seed)
+  t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
+  return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+}
+const random = seededRandom(29)
+
 const PARTICLES = Array.from({ length: 50 }, (_, i) => ({
   id: i,
-  left: Math.random() * 100,
-  top: Math.random() * 100,
-  size: Math.random() * 3 + 1,
-  duration: 10 + Math.random() * 10,
+  left: random() * 100,
+  top: random() * 100,
+  size: random() * 3 + 1,
+  duration: 10 + random() * 10,
 }))
 
 const ParticleField = ({ offsetX, offsetY }: { offsetX: MotionValue<number>; offsetY: MotionValue<number> }) => {

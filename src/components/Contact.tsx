@@ -162,7 +162,8 @@ const Contact = () => {
             variants={itemVariants}
             className="text-center pt-12 border-t border-gray-800/50"
           >
-            <p className="text-gray-600 text-sm">
+            {/* The year is pre-rendered at build time and may be a year behind in early January */}
+            <p className="text-gray-600 text-sm" suppressHydrationWarning>
               &copy; {new Date().getFullYear()} Abdou Nuru.
             </p>
           </motion.footer>

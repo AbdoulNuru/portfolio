@@ -10,9 +10,15 @@ import Navigation from './components/Navigation'
 
 const Resume = lazy(() => import('./components/Resume'))
 
-function App() {
-  const [view, setView] = useState<'portfolio' | 'resume'>(() =>
-    window.location.pathname === '/resume' ? 'resume' : 'portfolio'
+// A layout effect runs before paint in the browser; pre-rendering has no layout,
+// so use a plain effect there (and avoid React's server warning).
+const useIsomorphicLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect
+
+// initialPath comes from window.location in the browser and from the route being
+// rendered at build time, so the server and client agree on the first view.
+function App({ initialPath }: { initialPath: string }) {
+  const [view, setView] = useState<'portfolio' | 'resume'>(
+    initialPath === '/resume' ? 'resume' : 'portfolio'
   )
 
   // Sync browser back/forward with view state
@@ -28,7 +34,7 @@ function App() {
   // Browser back/forward (popstate) leaves the scroll position alone, as before.
   const scrollToTopOnSwitch = useRef(false)
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (scrollToTopOnSwitch.current) {
       scrollToTopOnSwitch.current = false
       window.scrollTo({ top: 0, behavior: 'instant' })
