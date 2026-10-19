@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { Home, User, Code, Briefcase, Mail, Download } from 'lucide-react'
 
@@ -14,6 +14,10 @@ const Navigation = ({ onResumeClick }: NavigationProps) => {
   // Transform scroll position to blur and background opacity
   const backgroundOpacity = useTransform(scrollY, [0, 100], [0.1, 0.8])
   const blurAmount = useTransform(scrollY, [0, 100], [8, 20])
+  // useMotionTemplate keeps these live. A plain template string turned the motion
+  // values into "[object Object]", so the browser dropped both styles.
+  const backgroundColor = useMotionTemplate`rgba(0, 0, 0, ${backgroundOpacity})`
+  const backdropFilter = useMotionTemplate`blur(${blurAmount}px)`
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,10 +58,11 @@ const Navigation = ({ onResumeClick }: NavigationProps) => {
       >
         <motion.div
           style={{
-            backgroundColor: `rgba(0, 0, 0, ${backgroundOpacity})`,
-            backdropFilter: `blur(${blurAmount}px)`,
+            backgroundColor,
+            backdropFilter,
+            WebkitBackdropFilter: backdropFilter,
           }}
-          className={`relative overflow-hidden max-w-7xl mx-auto rounded-2xl border transition-all duration-300 ${
+          className={`relative overflow-hidden max-w-7xl mx-auto rounded-2xl border transition-[border-color,box-shadow] duration-300 ${
             scrolled
               ? 'border-white/20 shadow-lg shadow-black/20'
               : 'border-white/10 shadow-md shadow-black/10'
@@ -154,64 +159,64 @@ const Navigation = ({ onResumeClick }: NavigationProps) => {
         </motion.div>
       </motion.nav>
 
-      {/* Mobile Navigation Menu */}
-      <motion.div
-        initial={{ opacity: 0, height: 0 }}
-        animate={{ 
-          opacity: isOpen ? 1 : 0, 
-          height: isOpen ? 'auto' : 0 
-        }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="fixed top-20 left-4 right-4 z-40 lg:hidden overflow-hidden"
-      >
-        <div className="bg-black/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-xl shadow-black/20">
-          <div className="p-6 space-y-4">
-            {navItems.map((item, index) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => { e.preventDefault(); handleNavClick(item.href) }}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ 
-                  opacity: isOpen ? 1 : 0, 
-                  x: isOpen ? 0 : -20 
-                }}
-                transition={{ delay: index * 0.1 }}
-                className="flex items-center space-x-3 p-3 rounded-xl text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300 group"
-              >
-                <item.icon size={20} className="text-blue-400 group-hover:scale-110 transition-transform duration-300" />
-                <span className="font-medium">{item.name}</span>
-              </motion.a>
-            ))}
-            
-            {/* Mobile CTA */}
-            <motion.button
-              onClick={() => { setIsOpen(false); onResumeClick?.() }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{
-                opacity: isOpen ? 1 : 0,
-                y: isOpen ? 0 : 20
-              }}
-              transition={{ delay: 0.5 }}
-              className="w-full mt-4 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center justify-center space-x-2"
-            >
-              <Download size={18} />
-              <span>Download Resume</span>
-            </motion.button>
-          </div>
-        </div>
-      </motion.div>
+      {/* Mobile Navigation Menu. Mounted only while open (hidden links used to stay
+          focusable) and animated with opacity/transform instead of height, which
+          forced a layout on every frame. */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="fixed top-20 left-4 right-4 z-40 lg:hidden"
+          >
+            <div className="bg-black/80 backdrop-blur-xl rounded-2xl border border-white/20 shadow-xl shadow-black/20">
+              <div className="p-6 space-y-4">
+                {navItems.map((item, index) => (
+                  <motion.a
+                    key={item.name}
+                    href={item.href}
+                    onClick={(e) => { e.preventDefault(); handleNavClick(item.href) }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-center space-x-3 p-3 rounded-xl text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300 group"
+                  >
+                    <item.icon size={20} className="text-blue-400 group-hover:scale-110 transition-transform duration-300" />
+                    <span className="font-medium">{item.name}</span>
+                  </motion.a>
+                ))}
 
-      {/* Mobile menu overlay */}
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={() => setIsOpen(false)}
-          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-30 lg:hidden"
-        />
-      )}
+                {/* Mobile CTA */}
+                <motion.button
+                  onClick={() => { setIsOpen(false); onResumeClick?.() }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="w-full mt-4 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center justify-center space-x-2"
+                >
+                  <Download size={18} />
+                  <span>Download Resume</span>
+                </motion.button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* Mobile menu overlay */}
+        {isOpen && (
+          <motion.div
+            key="mobile-menu-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsOpen(false)}
+            className="fixed inset-0 bg-black/30 backdrop-blur-sm z-30 lg:hidden"
+          />
+        )}
+      </AnimatePresence>
     </>
   )
 }
