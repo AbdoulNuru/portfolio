@@ -1,6 +1,6 @@
 import { motion, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { useRef, type CSSProperties, type PointerEvent, type ReactNode } from 'react'
-import { ArrowRight, ArrowUpRight, Check, Lock, MousePointer2 } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Lock, MousePointer2 } from 'lucide-react'
 import patrickDesktop800 from '../assets/images/projects/patrick-desktop-800.webp'
 import patrickDesktop1200 from '../assets/images/projects/patrick-desktop-1200.webp'
 import patrickMobile from '../assets/images/projects/patrick-mobile-480.webp'
@@ -17,7 +17,6 @@ interface Project {
   category: string
   tagline: string
   description: string
-  highlights: string[]
   technologies: string[]
   url: string
   demo: string
@@ -40,11 +39,6 @@ const allProjects: Project[] = [
     category: "Author website",
     tagline: "A literary home for a Rwandan writer, editor and journalist.",
     description: "Built a digital home for a Rwandan author to showcase published works, connect with readers, and offer editorial services. Designed to feel as personal as the writing itself.",
-    highlights: [
-      "Custom WordPress theme made for his brand",
-      "Books, journalism and services organised into six clear chapters",
-      "Structured data and Rank Math SEO for search visibility",
-    ],
     technologies: ["WordPress", "Custom Theme", "PHP", "JavaScript", "SEO"],
     url: "patricknzabonimpa.com",
     demo: "https://patricknzabonimpa.com/",
@@ -63,11 +57,6 @@ const allProjects: Project[] = [
     category: "E-commerce storefront",
     tagline: "A premium electronics store for shoppers in Kigali.",
     description: "A product-led catalogue for phones, tablets, gaming gear and accessories. Customers browse by category and order in seconds over WhatsApp, the way Kigali shoppers already like to buy.",
-    highlights: [
-      "Six product categories with featured picks and new arrivals",
-      "Product catalogue and images served from Supabase",
-      "One-tap WhatsApp ordering on every product",
-    ],
     technologies: ["Next.js", "React", "Tailwind CSS", "Supabase", "Vercel"],
     url: "phoneinside.rw",
     demo: "https://www.phoneinside.rw/",
@@ -86,11 +75,6 @@ const allProjects: Project[] = [
     category: "Spa & wellness",
     tagline: "A calm, photography-led website for a luxury spa in Kicukiro.",
     description: "Designed to feel like the spa itself: soft tones, generous space and clear treatment menus with prices, so guests can pick a treatment and book in a couple of taps.",
-    highlights: [
-      "Treatment menus with clear prices across six services",
-      "WhatsApp booking from every page",
-      "Dedicated page section for the sauna house in Nyamata",
-    ],
     technologies: ["Next.js", "React", "Tailwind CSS", "Vercel", "SEO"],
     url: "mugishaspa.com",
     demo: "https://www.mugishaspa.com/",
@@ -366,21 +350,6 @@ const Projects = () => {
                   <motion.p variants={textItemVariants} className="text-gray-400 leading-relaxed text-sm mb-6">
                     {project.description}
                   </motion.p>
-
-                  {/* What I built */}
-                  <motion.ul variants={textItemVariants} className="space-y-2.5 mb-6">
-                    {project.highlights.map((highlight) => (
-                      <li key={highlight} className="flex items-start gap-3 text-sm text-gray-300">
-                        <span
-                          className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
-                          style={{ backgroundColor: `${project.accent}1f`, color: project.accent }}
-                        >
-                          <Check size={12} strokeWidth={3} />
-                        </span>
-                        {highlight}
-                      </li>
-                    ))}
-                  </motion.ul>
 
                   {/* Tech stack */}
                   <motion.div variants={textItemVariants} className="flex flex-wrap gap-2 mb-8">
