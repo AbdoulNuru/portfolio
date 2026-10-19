@@ -1,14 +1,14 @@
-import { motion, useScroll, useTransform, useMotionValue } from 'framer-motion'
+import { motion, useScroll, useTransform, useMotionValue, type MotionValue } from 'framer-motion'
 import { useEffect, useState, useRef } from 'react'
 import { ChevronDown, Sparkles, Github, Linkedin } from 'lucide-react'
 import TechScroller from './TechScroller'
 
 const Hero = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const heroRef = useRef<HTMLElement>(null)
   const { scrollY } = useScroll()
 
-  // Mouse tracking for interactive effects
+  // Mouse parallax offset (±10px) for the particles. Motion values update the
+  // DOM directly, so moving the mouse doesn't re-render the Hero.
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 
@@ -19,10 +19,8 @@ const Hero = () => {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e
-      setMousePosition({ x: clientX, y: clientY })
-      mouseX.set(clientX)
-      mouseY.set(clientY)
+      mouseX.set((e.clientX / window.innerWidth - 0.5) * 20)
+      mouseY.set((e.clientY / window.innerHeight - 0.5) * 20)
     }
 
     window.addEventListener('mousemove', handleMouseMove)
@@ -46,38 +44,15 @@ const Hero = () => {
     >
       {/* Animated Background */}
       <div className="absolute inset-0 -z-10">
-        {/* Gradient Orbs */}
-        <motion.div 
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 50, 0],
-            scale: [1.2, 1, 1.2],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute top-1/2 left-1/2 w-72 h-72 bg-cyan-500/15 rounded-full blur-3xl"
-          animate={{
-            rotate: [0, 360],
-            scale: [0.8, 1.3, 0.8],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
+        {/* Gradient Orbs (loops are CSS keyframes in index.css) */}
+        <div className="hero-orb-1 absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl" />
+        <div className="hero-orb-2 absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl" />
+        <div className="hero-orb-3 absolute top-1/2 left-1/2 w-72 h-72 bg-cyan-500/15 rounded-full blur-3xl" />
       </div>
 
       {/* Interactive Particles */}
       <div aria-hidden="true">
-        <ParticleField mousePosition={mousePosition} />
+        <ParticleField offsetX={mouseX} offsetY={mouseY} />
       </div>
 
       {/* Main Content */}
@@ -90,26 +65,15 @@ const Hero = () => {
           transition={{ delay: 0.2 }}
           className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-full text-green-400 text-sm mb-8 backdrop-blur-sm hover:scale-105 transition-transform duration-300"
         >
-          <motion.div 
-            className="w-2 h-2 bg-green-500 rounded-full mr-3"
-            animate={{ 
-              scale: [1, 1.2, 1],
-              opacity: [1, 0.5, 1] 
-            }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
+          <div className="hero-pulse-dot w-2 h-2 bg-green-500 rounded-full mr-3" />
           <Sparkles className="w-4 h-4 mr-2" />
           Available for new opportunities
         </motion.div>
 
-        {/* Main Heading with Stagger Animation */}
+        {/* Main Heading. The heading, subtitle and paragraph are visible on the
+            first frame: fading them in delayed Largest Contentful Paint by ~1.4s. */}
         <div className="space-y-4 sm:space-y-6 mb-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="relative"
-          >
+          <div className="relative">
             <h1 className="text-4xl sm:text-6xl lg:text-8xl font-light leading-tight">
               <span className="inline-block">Hello, I'm</span>{' '}
               <motion.span
@@ -125,20 +89,15 @@ const Hero = () => {
             {/* Decorative line */}
             <motion.div
               className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-4 rounded-full"
-              initial={{ width: 0 }}
-              animate={{ width: 96 }}
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
               transition={{ delay: 1, duration: 0.8 }}
             />
-          </motion.div>
-          
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-2xl sm:text-4xl lg:text-5xl font-light text-gray-300"
-          >
+          </div>
+
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-light text-gray-300">
             A <TypewriterText />
-          </motion.h2>
+          </h2>
         </div>
 
         {/* Social Links */}
@@ -171,14 +130,9 @@ const Hero = () => {
         </motion.div>
 
         {/* Enhanced Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.0 }}
-          className="text-base sm:text-lg text-gray-400 max-w-4xl mx-auto leading-relaxed mb-8 cursor-default"
-        >
+        <p className="text-base sm:text-lg text-gray-400 max-w-4xl mx-auto leading-relaxed mb-8 cursor-default">
           <InteractiveText text="For the past 5+ years, I've been turning ideas into real products, from fintech platforms handling millions in transactions to tools people rely on every day. I thrive on hard problems, clean architecture, and building software that simply works." />
-        </motion.p>
+        </p>
 
         {/* CTA Buttons */}
         <motion.div
@@ -194,13 +148,9 @@ const Hero = () => {
             className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-2xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center justify-center space-x-2 group"
           >
             <span>View My Work</span>
-            <motion.div
-              aria-hidden="true"
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
+            <div aria-hidden="true" className="hero-nudge-x">
               →
-            </motion.div>
+            </div>
           </motion.button>
           
           <motion.button
@@ -234,13 +184,9 @@ const Hero = () => {
         className="hidden lg:flex absolute bottom-4 left-1/2 -translate-x-1/2 z-10 group flex-col items-center space-y-2 text-gray-400 hover:text-white transition-colors"
       >
         <span className="text-sm font-medium">Scroll to explore</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="p-2 rounded-full border border-gray-600 group-hover:border-blue-500 transition-colors"
-        >
+        <div className="hero-bob-y p-2 rounded-full border border-gray-600 group-hover:border-blue-500 transition-colors">
           <ChevronDown size={20} />
-        </motion.div>
+        </div>
       </motion.button>
 
       {/* Floating Elements */}
@@ -252,45 +198,43 @@ const Hero = () => {
 }
 
 // Typewriter Text Component
+// Module-level so it's the same array on every render; inside the component it
+// was a new array each render, which restarted the typing timer.
+const TYPEWRITER_TEXTS = ["Full-Stack Engineer", "Fintech Builder", "Systems Thinker", "Product Engineer"]
+
 const TypewriterText = () => {
-  const texts = ["Full-Stack Engineer", "Fintech Builder", "Systems Thinker", "Product Engineer"]
   const [currentIndex, setCurrentIndex] = useState(0)
   const [displayText, setDisplayText] = useState("")
   const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {
-    const current = texts[currentIndex]
+    const current = TYPEWRITER_TEXTS[currentIndex]
+    const fullyTyped = !isDeleting && displayText === current
     const timeout = setTimeout(() => {
       if (!isDeleting) {
         if (displayText.length < current.length) {
           setDisplayText(current.slice(0, displayText.length + 1))
         } else {
-          setTimeout(() => setIsDeleting(true), 2000)
+          setIsDeleting(true)
         }
       } else {
         if (displayText.length > 0) {
           setDisplayText(current.slice(0, displayText.length - 1))
         } else {
           setIsDeleting(false)
-          setCurrentIndex((prev) => (prev + 1) % texts.length)
+          setCurrentIndex((prev) => (prev + 1) % TYPEWRITER_TEXTS.length)
         }
       }
-    }, isDeleting ? 50 : 100)
+    }, fullyTyped ? 2000 : isDeleting ? 50 : 100)
 
     return () => clearTimeout(timeout)
-  }, [displayText, isDeleting, currentIndex, texts])
+  }, [displayText, isDeleting, currentIndex])
 
   return (
-    <motion.span className="text-gradient bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+    <span className="text-gradient bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
       {displayText}
-      <motion.span
-        animate={{ opacity: [0, 1, 0] }}
-        transition={{ duration: 1, repeat: Infinity }}
-        className="text-blue-400"
-      >
-        |
-      </motion.span>
-    </motion.span>
+      <span className="hero-blink text-blue-400">|</span>
+    </span>
   )
 }
 
@@ -316,41 +260,36 @@ const InteractiveText = ({ text }: { text: string }) => {
 }
 
 // Particle Field Component
-const ParticleField = ({ mousePosition }: { mousePosition: { x: number; y: number } }) => {
-  const particles = Array.from({ length: 50 }, (_, i) => ({
-    id: i,
-    x: Math.random() * window.innerWidth,
-    y: Math.random() * window.innerHeight,
-    size: Math.random() * 3 + 1,
-    speed: Math.random() * 0.5 + 0.1,
-  }))
+// Positions are generated once per page load. They used to be regenerated on
+// every render, so each mouse move made all 50 particles jump.
+const PARTICLES = Array.from({ length: 50 }, (_, i) => ({
+  id: i,
+  left: Math.random() * 100,
+  top: Math.random() * 100,
+  size: Math.random() * 3 + 1,
+  duration: 10 + Math.random() * 10,
+}))
 
-  const mouseOffsetX = (mousePosition.x / (typeof window !== 'undefined' ? window.innerWidth : 1) - 0.5) * 20
-  const mouseOffsetY = (mousePosition.y / (typeof window !== 'undefined' ? window.innerHeight : 1) - 0.5) * 20
-
+const ParticleField = ({ offsetX, offsetY }: { offsetX: MotionValue<number>; offsetY: MotionValue<number> }) => {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {particles.map((particle) => (
-        <motion.div
+    <motion.div
+      className="absolute inset-0 overflow-hidden pointer-events-none"
+      style={{ x: offsetX, y: offsetY }}
+    >
+      {PARTICLES.map((particle) => (
+        <div
           key={particle.id}
-          className="absolute bg-blue-400/30 rounded-full"
+          className="hero-particle absolute bg-blue-400/30 rounded-full"
           style={{
+            left: `${particle.left}%`,
+            top: `${particle.top}%`,
             width: particle.size,
             height: particle.size,
-          }}
-          animate={{
-            x: [particle.x + mouseOffsetX, particle.x + 100 + mouseOffsetX, particle.x + mouseOffsetX],
-            y: [particle.y + mouseOffsetY, particle.y - 100 + mouseOffsetY, particle.y + mouseOffsetY],
-            opacity: [0.3, 0.8, 0.3],
-          }}
-          transition={{
-            duration: 10 + Math.random() * 10,
-            repeat: Infinity,
-            ease: "easeInOut",
+            animationDuration: `${particle.duration}s`,
           }}
         />
       ))}
-    </div>
+    </motion.div>
   )
 }
 
@@ -359,30 +298,9 @@ const FloatingElements = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Floating Shapes */}
-      <motion.div
-        className="absolute top-1/4 left-10 w-4 h-4 bg-blue-400/40 rounded-full"
-        animate={{
-          y: [0, -20, 0],
-          rotate: [0, 180, 360],
-        }}
-        transition={{ duration: 6, repeat: Infinity }}
-      />
-      <motion.div
-        className="absolute top-1/3 right-10 w-6 h-6 bg-purple-400/40 rotate-45"
-        animate={{
-          y: [0, -30, 0],
-          rotate: [45, 225, 405],
-        }}
-        transition={{ duration: 8, repeat: Infinity }}
-      />
-      <motion.div
-        className="absolute bottom-1/3 left-20 w-3 h-3 bg-cyan-400/40 rounded-full"
-        animate={{
-          y: [0, -15, 0],
-          x: [0, 10, 0],
-        }}
-        transition={{ duration: 5, repeat: Infinity }}
-      />
+      <div className="hero-float-1 absolute top-1/4 left-10 w-4 h-4 bg-blue-400/40 rounded-full" />
+      <div className="hero-float-2 absolute top-1/3 right-10 w-6 h-6 bg-purple-400/40 rotate-45" />
+      <div className="hero-float-3 absolute bottom-1/3 left-20 w-3 h-3 bg-cyan-400/40 rounded-full" />
     </div>
   )
 }

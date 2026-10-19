@@ -127,6 +127,110 @@ html {
   animation: text-glow 3s ease-in-out infinite;
 }
 
+/* Hero background loops. CSS transform/opacity animations run on the
+   compositor, so they don't keep the main thread busy like JS-driven loops. */
+.hero-orb-1 {
+  animation: hero-orb-1 8s ease-in-out infinite;
+}
+
+@keyframes hero-orb-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(100px, -50px) scale(1.2); }
+}
+
+.hero-orb-2 {
+  animation: hero-orb-2 10s ease-in-out infinite;
+}
+
+@keyframes hero-orb-2 {
+  0%, 100% { transform: translate(0, 0) scale(1.2); }
+  50% { transform: translate(-100px, 50px) scale(1); }
+}
+
+.hero-orb-3 {
+  animation: hero-orb-3 12s ease-in-out infinite;
+}
+
+@keyframes hero-orb-3 {
+  0%, 100% { transform: scale(0.8); }
+  50% { transform: scale(1.3); }
+}
+
+.hero-particle {
+  opacity: 0.3;
+  animation: hero-particle 15s ease-in-out infinite;
+}
+
+@keyframes hero-particle {
+  0%, 100% { transform: translate(0, 0); opacity: 0.3; }
+  50% { transform: translate(100px, -100px); opacity: 0.8; }
+}
+
+.hero-float-1 {
+  animation: hero-float-1 6s ease-in-out infinite;
+}
+
+@keyframes hero-float-1 {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+
+.hero-float-2 {
+  animation: hero-float-2 8s ease-in-out infinite;
+}
+
+@keyframes hero-float-2 {
+  0% { transform: translateY(0) rotate(45deg); }
+  50% { transform: translateY(-30px) rotate(225deg); }
+  100% { transform: translateY(0) rotate(405deg); }
+}
+
+.hero-float-3 {
+  animation: hero-float-3 5s ease-in-out infinite;
+}
+
+@keyframes hero-float-3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(10px, -15px); }
+}
+
+.hero-pulse-dot {
+  animation: hero-pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes hero-pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.5; }
+}
+
+.hero-nudge-x {
+  animation: hero-nudge-x 1.5s ease-in-out infinite;
+}
+
+@keyframes hero-nudge-x {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+
+.hero-bob-y {
+  animation: hero-bob-y 2s ease-in-out infinite;
+}
+
+@keyframes hero-bob-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.hero-blink {
+  animation: hero-blink 1s ease-in-out infinite;
+}
+
+@keyframes hero-blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
 /* Infinite marquee scroller */
 .marquee {
   width: 100%;
