@@ -70,7 +70,7 @@ const Resume = ({ onBack }: ResumeProps) => {
             Full-Stack Software Engineer
           </p>
           <a
-            href="https://abdounuru.com"
+            href="https://www.abdounuru.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[12px] mt-1 inline-block hover:underline"
