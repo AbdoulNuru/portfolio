@@ -2,6 +2,12 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { ExternalLink, Github, ArrowRight } from 'lucide-react'
+import patrickWebp800 from '../assets/images/patricknzabonimpa-800.webp'
+import patrickWebp1200 from '../assets/images/patricknzabonimpa-1200.webp'
+import patrickJpg1200 from '../assets/images/patricknzabonimpa-1200.jpg'
+
+// Screenshots render at most ~600px wide (full width on mobile)
+const IMAGE_SIZES = '(min-width: 1024px) 600px, 100vw'
 
 // Browser mockup frame component
 const BrowserFrame = ({ children, url }: { children: React.ReactNode; url?: string }) => (
@@ -34,7 +40,10 @@ const allProjects = [
     description: "Built a digital home for a Rwandan author to showcase published works, connect with readers, and offer editorial services. Designed to feel as personal as the writing itself.",
     highlight: "Custom Elementor layouts with a reading-first hierarchy, structured data for SEO, and a sub-2s load time on mobile.",
     technologies: ["WordPress", "Elementor", "CSS", "SEO", "Responsive Design"],
-    image: "/images/patricknzabonimpa.png",
+    image: {
+      webpSrcSet: `${patrickWebp800} 800w, ${patrickWebp1200} 1200w`,
+      fallback: patrickJpg1200,
+    },
     url: "patricknzabonimpa.com",
     github: "",
     demo: "https://www.patricknzabonimpa.com/",
@@ -117,15 +126,18 @@ const Projects = () => {
                         style={{ transformStyle: 'preserve-3d' }}
                       >
                         <BrowserFrame url={project.url}>
-                          <img
-                            src={project.image}
-                            alt={`Screenshot of ${project.title} project`}
-                            className="w-full aspect-[16/10] object-cover"
-                            loading="lazy"
-                            decoding="async"
-                            width={800}
-                            height={500}
-                          />
+                          <picture className="block">
+                            <source type="image/webp" srcSet={project.image.webpSrcSet} sizes={IMAGE_SIZES} />
+                            <img
+                              src={project.image.fallback}
+                              alt={`Screenshot of ${project.title} project`}
+                              className="w-full aspect-[16/10] object-cover"
+                              loading="lazy"
+                              decoding="async"
+                              width={800}
+                              height={500}
+                            />
+                          </picture>
                         </BrowserFrame>
                       </motion.div>
                     </div>
